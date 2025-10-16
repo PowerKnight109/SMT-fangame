@@ -40,11 +40,11 @@ for i in range(2, 6):
     print(i)
 
 
-# print("[ROUND 2]\nvs Daemon, Pixie")
-# time.sleep(1)
-# if fight([player, pixie], [daemon, pixie1]):
-#     print("You Win!")
-# print("GAME OVER")
+print("[ROUND 2]\nvs Daemon, Pixie")
+time.sleep(1)
+if fight([player, pixie], [daemon, pixie1]):
+    print("You Win!")
+print("GAME OVER")
 
 if "Sealed demons are unable to use skills other than their basic attack" in glossary:
     print("True")

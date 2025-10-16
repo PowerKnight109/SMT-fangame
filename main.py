@@ -19,4 +19,3 @@ if fight([player], [pixie]):
 
 print("GAME OVER")
 
-#
