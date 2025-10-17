@@ -11,7 +11,7 @@ from Skills import strike, agi, zio, bufu, zan, mudo, dia, marin_karin, tarukaja
 
 
 class chara:
-    def __init__(self, name, race, lv, mxhp, hp, mxmp, mp, xp, str, vit, agl, mag, luck, loyal, coward, play, element, skills, macca, buffs, guard):
+    def __init__(self, name, race, lv, mxhp, hp, mxmp, mp, xp, str, vit, agl, mag, luck, loyal, coward, play, element, skills, macca, buffs, guard, image):
         self.name = name
         self.race = race
         self.lv = lv
@@ -33,6 +33,7 @@ class chara:
         self.macca = macca
         self.buffs = buffs
         self.guard = guard
+        self.image = image
 
 #taru = impacts attack, raku = impacts defence, suku = impacts evasion/accuracy
 
@@ -56,7 +57,7 @@ player = chara("You", "Human", 5, 100, 100, 100, 100, 0, 5, 5, 5, 5, 5, 0, 0, 0,
        "Confusion": {"res": 0, "dur": 0, "inflict": 0},
        "Charm": {"res": 0, "dur": 0, "inflict": 0},
        "Seal": {"res": 0, "dur": 0, "inflict": 0},
-        }, [agi, zio], 0, {"taru": {"stage": 0, "dur":0}, "raku": {"stage": 0, "dur":0}, "suku": {"stage": 0, "dur":0}}, False)
+        }, [agi, zio], 0, {"taru": {"stage": 0, "dur":0}, "raku": {"stage": 0, "dur":0}, "suku": {"stage": 0, "dur":0}}, False, "                        %*+#%\n                       %%%%%##*\n                      %%@@%%%#%\n                       %@@%=-%@\n                         @+=+#\n                       @@%%+%%%**\n                      @@#=+=*##**##\n                    @ @#-=-+%#%@**#%\n                    @%@+=+=#@@@@%@#%%%\n                     @@*-==%@@@   @%*+%\n              @@@@@%%@#====+%@@  %##@@\n            %%%@%%@*@@+=====#%%#**@@\n          @%%   %%@%%#+=-:==*%%%@#\n                  %@++==*%%%%%*#%%@\n                 ###%@@%#%%==+**#@@@\n               %*#@@@@@@@@#:-#@ *#@\n                ##@@%@@@@@@%-=@  %\n               ######@@@@@@@@@#@\n             ##* #@ +@@@@@@@@**#%\n            ==      *@@@@  @@#**#\n          *+=       *@@@@   @@***@\n        **+         #%@@@    @@*##\n       -+%           #@@@     @@##@\n     --#             *@@@      @%%@@\n   ==#               *@@@       %@@@@\n  +*%                *@@@        %@@@@\n**#                  #@@@         @@@@@\n                     #@@@          @@@@\n                     %@@@           @#@@\n                     @@@            @@#%\n                    %@@@             @%##\n                    @@@@             @@%#@\n                   #@@@#               @@#%\n                 %@%%%                 @@#%\n                                        %%#\n")
 
 daemon = chara("Daemon", "Brute", 7, 78, 78, 73, 73, 0, 11, 9, 9, 8, 7, -10, -20, 0, {
        "Physical":{"aff": 2, "res":0},
@@ -76,7 +77,7 @@ daemon = chara("Daemon", "Brute", 7, 78, 78, 73, 73, 0, 11, 9, 9, 8, 7, -10, -20
        "Confusion": {"res": 0, "dur": 0, "inflict": 0},
        "Charm": {"res": 0, "dur": 0, "inflict": 0},
        "Seal": {"res": 0, "dur": 0, "inflict": 0},
-}, [strike, hellish_slash, agi, mudo, tarukaja, rakunda], 0,{"taru": {"stage": 0, "dur":0}, "raku": {"stage": 0, "dur":0}, "suku": {"stage": 0, "dur":0}}, False)
+}, [strike, hellish_slash, agi, mudo, tarukaja, rakunda], 0,{"taru": {"stage": 0, "dur":0}, "raku": {"stage": 0, "dur":0}, "suku": {"stage": 0, "dur":0}}, False, "               %#*###%%%%%%%%\n            %#%%%@@@@@@@     @  @@%%%%\n         %%%%@@%%%%%%%%%#       @   @@%%%%\n       @%%%%@@  %%   %%%%#%   %*### %%%@%%%\n     @@   %@    @      %%%%%*###=*#%%%%%@@@%%\n    @@   @@             #%%%%%#*##*%#%##%%@%%%\n    @                 #%%%%##%%#%%%%%  %% %%%%\n                     #%@%%###%##%%%%%  @  @%%%@\n                     %%@@@#%%%%#%%%%%      @ @@\n                     #%@@@%*%%   %%%%      @  @\n                    ##%%%%@%#%    %%% @       @\n                %%%%###%@@@*#%@  #%%%#        @\n              %@@%  ##%%@  #%%#%%%%#\n              %     %#%%   #%%##%%\n              %#*#%@%%%*    %%%%%\n                    %#%%    %%%%@\n                     %%%  *#@%%%\n                     %%%%#%@%%%\n                      #%%@@%#%\n                 ++***##%%@@%@\n                +*++*+ @%%@ %@\n                =+##*  @%%%\n                        @@@\n")
 
 pixie = chara("Pixie", "Fairy", 2, 55, 55, 82, 82, 0, 2, 4, 7, 8, 6, 5, 0, 30,  {
        "Physical":{"aff": -2, "res":0},
@@ -96,7 +97,7 @@ pixie = chara("Pixie", "Fairy", 2, 55, 55, 82, 82, 0, 2, 4, 7, 8, 6, 5, 0, 30,  
        "Confusion": {"res": -0.25, "dur": 0, "inflict": 0},
        "Charm": {"res": 0.5, "dur": 0, "inflict": 0},
        "Seal": {"res": 0, "dur": 0, "inflict": 0},
-        }, [strike, dia, zio, zan, marin_karin, sukukaja], 0,{"taru": {"stage": 0, "dur":0}, "raku": {"stage": 0, "dur":0}, "suku": {"stage": 0, "dur":0}}, False)
+        }, [strike, dia, zio, zan, marin_karin, sukukaja], 0,{"taru": {"stage": 0, "dur":0}, "raku": {"stage": 0, "dur":0}, "suku": {"stage": 0, "dur":0}}, False, "            ::-  :::-\n          -::::::\n          ---::::\n      #%%===--:::\n     ***+===------\n      #-**-===\n        **##%-\n         *####\n     ***#=-*###\n   +*#%%#=*% *#\n  *##%#%\n##%   *#%\n       *%@\n")
 
 pixie1 = chara("Pixie", "Fairy", 2, 55, 55, 82, 82, 0, 2, 4, 7, 8, 6, 5, 0, 30,  {
        "Physical":{"aff": -2, "res":0},
@@ -116,7 +117,7 @@ pixie1 = chara("Pixie", "Fairy", 2, 55, 55, 82, 82, 0, 2, 4, 7, 8, 6, 5, 0, 30, 
        "Confusion": {"res": -0.25, "dur": 0, "inflict": 0},
        "Charm": {"res": 0.5, "dur": 0, "inflict": 0},
        "Seal": {"res": 0, "dur": 0, "inflict": 0},
-        }, [strike, dia, zio, zan, marin_karin, sukukaja], 0,{"taru": {"stage": 0, "dur":0}, "raku": {"stage": 0, "dur":0}, "suku": {"stage": 0, "dur":0}}, False)
+        }, [strike, dia, zio, zan, marin_karin, sukukaja], 0,{"taru": {"stage": 0, "dur":0}, "raku": {"stage": 0, "dur":0}, "suku": {"stage": 0, "dur":0}}, False, "            ::-  :::-\n          -::::::\n          ---::::\n      #%%===--:::\n     ***+===------\n      #-**-===\n        **##%-\n         *####\n     ***#=-*###\n   +*#%%#=*% *#\n  *##%#%\n##%   *#%\n       *%@\n")
 
 
 

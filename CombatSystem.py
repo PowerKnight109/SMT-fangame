@@ -234,36 +234,53 @@ def fight(party, enemy):
             print("This feature has not been implemented yet")
             continue
         elif partymenu == "c":
-            print("This feature has not been implemented yet")
-            continue
             print("Who do you want to analyze?")
-            print("A)", enemy.name, "\nB)", player.name)
-            choose = input().lower()
-            if choose == "a":
-                target = enemy
-            else:
-                target = player
-            print(target.name, "(lv"+str(target.lv)+")\n" + "species:", target.race, "\nHP:", str(target.hp)+"/"+str(target.mxhp)+"\nMP:", str(target.mp)+"/"+str(target.mxmp), "\n\nskill affinities:")
-            for i in range(11):
-                print(list(target.element)[i] + ":", target.element[list(target.element)[i]]["aff"])
-            print("\nweaknesses and resistances:")
-            for i in list(range(7)) + list(range(11, 16)):
-                if target.element[list(target.element)[i]]["res"] != 0:
-                    if target.element[list(target.element)[i]]["res"] < 0:
-                        print(list(target.element)[i] + ":", "WEAK")
-                    elif target.element[list(target.element)[i]]["res"] < 1:
-                        print(list(target.element)[i] + ":", "RESIST")
-                    elif target.element[list(target.element)[i]]["res"] == 1:
-                        print(list(target.element)[i] + ":", "NULL")
-                    elif target.element[list(target.element)[i]]["res"] == 2:
-                        print(list(target.element)[i] + ":", "DRAIN")
-                    elif target.element[list(target.element)[i]]["res"] == 3:
-                        print(list(target.element)[i] + ":", "REPEL")
+            for i in range(len(combatants)):
+                print(chr(i + 65) + ")", combatants[len(combatants)-i-1].name)
+                if i == len(enemy)-1:
+                    print("\n")
+            choose = input().upper()
+            if len(str(choose)) != 1:
+                continue
+            elif ord(choose) - 65 < len(combatants):
+                observee = combatants[len(combatants)-(ord(choose)-64)]
+                print(observee.image, "\n"+observee.name, "(lv" + str(observee.lv) + ")\n" + "species:", observee.race, "\nHP:",
+                      str(observee.hp) + "/" + str(observee.mxhp) + "\nMP:",
+                      str(observee.mp) + "/" + str(observee.mxmp), "\n\nskill affinities:")
+                for i in range(11):
+                    print(list(observee.element)[i] + ":", observee.element[list(observee.element)[i]]["aff"])
+                print("\nweaknesses and resistances:")
+                for i in list(range(7)) + list(range(11, 16)):
+                    if observee.element[list(observee.element)[i]]["res"] != 0:
+                        if observee.element[list(observee.element)[i]]["res"] < 0:
+                            print(list(observee.element)[i] + ":", "WEAK")
+                        elif observee.element[list(observee.element)[i]]["res"] < 1:
+                            print(list(observee.element)[i] + ":", "RESIST")
+                        elif observee.element[list(observee.element)[i]]["res"] == 1:
+                            print(list(observee.element)[i] + ":", "NULL")
+                        elif observee.element[list(observee.element)[i]]["res"] == 2:
+                            print(list(observee.element)[i] + ":", "DRAIN")
+                        elif observee.element[list(observee.element)[i]]["res"] == 3:
+                            print(list(observee.element)[i] + ":", "REPEL")
 
-            print("\nstats:\nSTR:", target.str, "\nVIT:", target.vit, "\nMAG:", target.mag, "\nAGL:", target.agl, "\nLCK:", target.luck, "\n\nskills:")
-            for i in range(len(target.skills)):
-                print(target.skills[i].name)
-            end = input("Press enter to continue\n")
+                print("\nstats:\nSTR:", observee.str, "\nVIT:", observee.vit, "\nMAG:", observee.mag, "\nAGL:",
+                      observee.agl, "\nLCK:", observee.luck, "\n\nskills:")
+                for i in range(len(observee.skills)):
+                    print(observee.skills[i].name)
+                while True:
+                    end = input("Press enter to continue\n").lower()
+                    if end.lower() in glossary:
+                        print(glossary[end.lower()])
+                    else:
+                        break
+                continue
+
+            else:
+                print("Not a valid target!")
+                continue
+
+
+
 
         elif partymenu == "e":
             print("You can't run from this battle!")
@@ -281,7 +298,7 @@ def fight(party, enemy):
             print("You won the battle")
             return True
 
-        print("ENEMY TURN")
+        print("[ENEMY TURN]")
         Descartes(enemy, party)
         turn +=1
         pt = len(party)
