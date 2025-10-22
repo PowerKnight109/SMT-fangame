@@ -1,10 +1,9 @@
-from Skills import strike, skilluse
+from Skills import strike, skilluse, effects
 from CharacterSheets import player
 from AI import  Descartes
 from Dictionary import glossary
+from UI import namedisplay
 import time
-
-
 
 
 def fight(party, enemy):
@@ -12,7 +11,7 @@ def fight(party, enemy):
     hpt = 0
     turn = 0
     combatants = party + enemy
-    effects = ["taru", "raku", "suku", "Sleep", "Mirage", "Poison", "Confusion", "Charm", "Seal"]
+
     for i in range(len(party)):
         if strike in party[i].skills:
             party[i].skills.remove(strike)
@@ -37,68 +36,7 @@ def fight(party, enemy):
 
         combatants = party + enemy
 
-        partydisplay = []
-        enemydisplay = []
-        partyhealth = []
-        enemyhealth = []
-        partymp = []
-
-        for i in range(len(combatants)):
-            display = ""
-            for j in range(3):
-                if combatants[i].buffs[effects[j]]["stage"] != 0:
-                    if j == 0:
-                        display += "(ATK"
-                    elif j == 1:
-                        display += "(DEF"
-                    elif j == 2:
-                        display += "(EVA"
-                    if  combatants[i].buffs[effects[j]]["stage"] > 0:
-                        for k in range(combatants[i].buffs[effects[j]]["stage"]):
-                            display += "^"
-                    else:
-                        for k in range(combatants[i].buffs[effects[j]]["stage"]*-1):
-                            display += "v"
-                    display += ")"
-            for j in range(6):
-                token = ["(SLP)", "(MIRA)", "(PSN)", "(CONF)", "(CHRM)", "(SL)"]
-                if combatants[i].element[effects[j+3]]["dur"] != 0:
-                    display += token[j]
-
-            total = 0
-            bar = ""
-            total2 = 0
-            bar2 = ""
-            for j in range(30):
-                total += combatants[i].mxhp / 30
-                if total < combatants[i].hp:
-                    bar += "+"
-                else:
-                    bar += "-"
-                if i < len(party):
-                    total2 += combatants[i].mxmp/30
-                    if total2 < combatants[i].mp:
-                        bar2 += "+"
-                    else:
-                        bar2 += "-"
-
-            if i < len(party):
-                partydisplay.append(display)
-                partyhealth.append(bar)
-                partymp.append(bar2)
-            else:
-                enemydisplay.append(display)
-                enemyhealth.append(bar)
-
-
-        for i in range(len(enemy)):
-            print(enemy[i].name + enemydisplay[i]+":", enemyhealth[i])
-            # print(enemydisplay)
-            # print(partydisplay)
-            # print(pixie.buffs["suku"]["stage"])
-
-
-
+        namedisplay(enemy, False)
         partymenu = input("A) Fight\nB) Talk\nC) Status\nD) Skip\nE) Flee\n").lower()
 
         if partymenu == "a":
@@ -106,9 +44,8 @@ def fight(party, enemy):
             while len(enemy) > 0 and len(party) > 0 and (pt > 0 or hpt > 0):
                 if baton >= len(party):
                     baton = 0
-                print("\nTurns:", pt, "        Half Turns:", hpt, "\n\nActive Demon:", party[baton].name, "\nHP:", str(party[baton].hp)+"/"+str(party[baton].mxhp), partyhealth[baton], "     MP:", str(party[baton].mp)+"/"+str(party[baton].mxmp), partymp[baton])
-                if len(partydisplay[baton]) > 0:
-                    print("Status:", partydisplay[baton])
+                print("\nTurns:", pt, "        Half Turns:", hpt)
+                namedisplay([party[baton]], True)
                 unitmenu = input( "A) Attack\nB) Skill\nC) Item\nD) Guard\nE) Pass\n").lower()
                 if unitmenu == "a":
                     if len(enemy) == 1:

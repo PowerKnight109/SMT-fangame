@@ -197,6 +197,7 @@ marin_karin = cmarin_karin()
 hellish_slash = chellish_slash()
 
 ailments = [marin_karin]
+effects = ["taru", "raku", "suku", "Sleep", "Mirage", "Poison", "Confusion", "Charm", "Seal"]
 
 def skilluse(allies, enemies, user, target, move):
     x = 0
