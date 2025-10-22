@@ -97,7 +97,7 @@ def namedisplay(subject, allied):
 
 
         if allied:
-            display = "Active Demon:" +" " + subject[i].name + " "+ "\n"+"HP:"+hbar+"("+str(subject[i].hp)+"/"+str(subject[i].mxhp)+")" + " " + "\nMP:" + mbar + "("+ str(subject[i].mp) +"/"+str(subject[i].mxmp) + ")"+"\n"+vision(subject)
+            display = "Active Demon:" +" " + subject[i].name +"\n"+vision(subject) +"HP:"+hbar+"("+str(subject[i].hp)+"/"+str(subject[i].mxhp)+")" + " " + "\nMP:" + mbar + "("+ str(subject[i].mp) +"/"+str(subject[i].mxmp) + ")"
             if len(label) > 0:
                 display += "\n"+"Status:" + label
         else:
@@ -117,7 +117,7 @@ def namedisplay(subject, allied):
 
 
 #namedisplay([daemon, pixie, pixie1, player], False)
-#namedisplay([player], True)
+namedisplay([player], True)
 
 
 
