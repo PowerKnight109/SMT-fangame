@@ -163,8 +163,8 @@ def Descartes(enemies, party):
                 if data not in prioritylist:
                         prioritylist.append(data)
 
-        for i in range(len(prioritylist)):
-            print(prioritylist[i][2].name, prioritylist[i][1])
+        # for i in range(len(prioritylist)):
+        #     print(prioritylist[i][2].name, prioritylist[i][1])
         y = skilluse(enemies, party, enemies[relay], prioritylist[len(prioritylist)-1][0], prioritylist[len(prioritylist)-1][2])
         time.sleep(1)
         if prioritylist[len(prioritylist)-1][2].element == "Heal":
