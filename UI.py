@@ -117,7 +117,7 @@ def namedisplay(subject, allied):
 
 
 #namedisplay([daemon, pixie, pixie1, player], False)
-namedisplay([player], True)
+#namedisplay([player], True)
 
 
 
