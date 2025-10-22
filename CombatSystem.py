@@ -59,6 +59,7 @@ def fight(party, enemy):
                     if len(aim) != 1:
                         if aim.lower() in glossary:
                             print(glossary[aim.lower()])
+                            input("Press enter to continue\n")
                         else:
                             print("That is not a valid target!")
                     elif ord(aim) - 65 >= len(enemy):
@@ -117,6 +118,7 @@ def fight(party, enemy):
                             if len(aim) != 1:
                                 if aim.lower() in glossary:
                                     print(glossary[aim.lower()])
+                                    input("Press enter to continue\n")
                                 else:
                                     print("That is not a valid target!")
                                 continue
@@ -159,6 +161,7 @@ def fight(party, enemy):
                 else:
                     if unitmenu in glossary:
                         print(glossary[unitmenu])
+                        input("Press enter to continue\n")
                     else:
                         print("You can't do that yet")
                     continue
@@ -208,6 +211,7 @@ def fight(party, enemy):
                     end = input("Press enter to continue\n").lower()
                     if end.lower() in glossary:
                         print(glossary[end.lower()])
+                        input("Press enter to continue\n")
                     else:
                         break
                 continue

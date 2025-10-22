@@ -69,9 +69,10 @@ def Descartes(enemies, party):
                         x += (100-(group[k].hp/group[k].mxhp)*100)/2
                         if enemies[relay].hp == enemies[relay].mxhp:
                             x -= 999
-                        elif enemies[relay].element["Heal"]["inflict"] == 1:
+                        if enemies[relay].element["Heal"]["inflict"] > 0:
                             x -= 60
-                            enemies[relay].element["Heal"]["inflict"] = 0
+                            enemies[relay].element["Heal"]["inflict"] -= 1
+
 
                         # if enemies[relay] == group[k]:
                         #     x += enemies[relay].coward/2
@@ -162,10 +163,12 @@ def Descartes(enemies, party):
                 if data not in prioritylist:
                         prioritylist.append(data)
 
+        for i in range(len(prioritylist)):
+            print(prioritylist[i][2].name, prioritylist[i][1])
         y = skilluse(enemies, party, enemies[relay], prioritylist[len(prioritylist)-1][0], prioritylist[len(prioritylist)-1][2])
         time.sleep(1)
         if prioritylist[len(prioritylist)-1][2].element == "Heal":
-            prioritylist[len(prioritylist)-1][0].element["Heal"]["inflict"] = 1
+            enemies[relay].element["Heal"]["inflict"] = 2
         if y == -2:
             pt = 0
             hpt = 0
