@@ -197,10 +197,18 @@ class chellish_slash(skill):
             return 0
 
 
-# class camrita_soda(skill):
-#     def __init__(self):
-#         super().__init__("Amrita Soda", "Heal", 100, 0, False, False)
-#     def use(self, user, target):
+class camrita_soda(skill):
+    def __init__(self):
+        super().__init__("Amrita Soda", "Heal", 100, 0, True, False)
+    def use(self, user, target):
+        fixed = False
+        for i in range(11, len(target.element)):
+            if target.element[list(target.element)[i]]["dur"] > 0:
+                target.element[list(target.element)[i]]["dur"] = 0
+                print(target.name, "was cured of", list(target.element)[i] + "!")
+                fixed = True
+        if not fixed:
+            print("But", target.name, "was not suffering from any status effects")
 
 strike = cstrike()
 agi = cagi()
@@ -216,8 +224,11 @@ rakunda = crakunda()
 marin_karin = cmarin_karin()
 hellish_slash = chellish_slash()
 
+amrita_soda = camrita_soda()
+
 ailments = [marin_karin]
 effects = ["taru", "raku", "suku", "Sleep", "Mirage", "Poison", "Confusion", "Charm", "Seal"]
+items = [amrita_soda]
 
 def skilluse(allies, enemies, user, target, move):
     x = 0
@@ -268,7 +279,10 @@ def skilluse(allies, enemies, user, target, move):
             print(user.name, "used", move.name, "on itself!")
         else:
             print(user.name, "used", move.name, "on", target.name + "!")
-        user.mp -= move.cost
+        if move in items:
+            move.cost -= 1
+        else:
+            user.mp -= move.cost
 
         if move.element == "Heal" or move.element == "Support":
             move.use(user, target)

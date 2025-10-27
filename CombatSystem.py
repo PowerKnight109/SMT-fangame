@@ -1,4 +1,4 @@
-from Skills import strike, skilluse, effects
+from Skills import strike, skilluse, effects, items
 from CharacterSheets import player
 from AI import  Descartes
 from Dictionary import glossary
@@ -62,8 +62,10 @@ def fight(party, enemy):
                             input("Press enter to continue\n")
                         else:
                             print("That is not a valid target!")
+                            time.sleep(1)
                     elif ord(aim) - 65 >= len(enemy):
                         print("That is not a valid target!")
+                        time.sleep(1)
 
                     else:
                         attack = skilluse(party, enemy, party[baton], enemy[ord(aim)-65], strike)
@@ -93,7 +95,7 @@ def fight(party, enemy):
                     if len(chooseskill) != 1:
                         if chooseskill.lower() in glossary:
                             print(glossary[chooseskill.lower()])
-                            input("press enter to continue")
+                            input("")
                         continue
                     elif ord(chooseskill)-65 < len(party[baton].skills):
                         cast = party[baton].skills[ord(chooseskill) - 65]
@@ -102,6 +104,7 @@ def fight(party, enemy):
                             continue
                         if cast.cost > party[baton].mp:
                             print("You don't have enough MP!")
+                            time.sleep(1)
                             continue
                         else:
                             if cast.friendly:
@@ -119,13 +122,15 @@ def fight(party, enemy):
                             if len(aim) != 1:
                                 if aim.lower() in glossary:
                                     print(glossary[aim.lower()])
-                                    input("Press enter to continue\n")
+                                    input("")
                                 else:
                                     print("That is not a valid target!")
+                                    time.sleep(1)
                                 continue
 
                             elif ord(aim) - 65 >= len(group):
                                 print("That is not a valid target!")
+                                time.sleep(1)
                                 continue
 
 
@@ -149,7 +154,66 @@ def fight(party, enemy):
 
                     else:
                         print("That's not a skill!")
+                        time.sleep(1)
                         continue
+
+                elif unitmenu == "c":
+                    backer = 0
+                    for i in range(len(items)):
+                        if items[i].cost > 0:
+                            print(chr(i + 65 - backer) + ")", items[i].name+ ":",  items[i].cost)
+                        else:
+                            backer += 1
+                    if backer == len(items):
+                        print("You have no items")
+                        time.sleep(1)
+                        continue
+                    itemuse = input("Which item would you like to use?\n").upper()
+                    if len(itemuse) != 1:
+                        if itemuse.lower() in glossary:
+                            print(glossary[itemuse.lower()])
+                            input("")
+                        continue
+                    elif ord(itemuse) - 65 < len(items):
+                        useitem = items[ord(itemuse) - 65]
+                        if useitem.cost <= 0:
+                            print("You don't have that item!")
+                            time.sleep(1)
+                            continue
+                        else:
+                            if useitem.friendly:
+                                group = party
+                            else:
+                                group = enemy
+                            if len(group) == 1:
+                                aim = "A"
+                            else:
+                                print("Who will you target?")
+                                for i in range(len(group)):
+                                    print(chr(i + 65) + ")", group[i].name)
+                                aim = input().upper()
+
+                            if len(aim) != 1:
+                                if aim.lower() in glossary:
+                                    print(glossary[aim.lower()])
+                                    input("")
+                                else:
+                                    print("That is not a valid target!")
+                                    time.sleep(1)
+                                continue
+
+                            elif ord(aim) - 65 >= len(group):
+                                print("That is not a valid target!")
+                                time.sleep(1)
+                                continue
+
+                            skilluse(party, enemy, party[baton], group[ord(aim) - 65], useitem)
+                            time.sleep(1)
+
+                            if hpt > 0:
+                                hpt -= 1
+                            else:
+                                pt -= 1
 
                 elif unitmenu == "e":
                     if pt > 0:
@@ -162,9 +226,10 @@ def fight(party, enemy):
                 else:
                     if unitmenu in glossary:
                         print(glossary[unitmenu])
-                        input("Press enter to continue\n")
+                        input("")
                     else:
                         print("You can't do that yet")
+                        time.sleep(1)
                     continue
 
                 baton += 1
@@ -173,6 +238,7 @@ def fight(party, enemy):
 
         elif partymenu == "b":
             print("This feature has not been implemented yet")
+            time.sleep(1)
             continue
         elif partymenu == "c":
             print("Who do you want to analyze?")
@@ -182,6 +248,9 @@ def fight(party, enemy):
                     print("\n")
             choose = input().upper()
             if len(str(choose)) != 1:
+                if choose.lower() in glossary:
+                    print(glossary[partymenu])
+                    input("")
                 continue
             elif ord(choose) - 65 < len(combatants):
                 observee = combatants[len(combatants)-(ord(choose)-64)]
@@ -212,13 +281,14 @@ def fight(party, enemy):
                     end = input("Press enter to continue\n").lower()
                     if end.lower() in glossary:
                         print(glossary[end.lower()])
-                        input("Press enter to continue\n")
+                        input("")
                     else:
                         break
                 continue
 
             else:
                 print("Not a valid target!")
+                time.sleep(1)
                 continue
 
 
@@ -226,11 +296,16 @@ def fight(party, enemy):
 
         elif partymenu == "e":
             print("You can't run from this battle!")
+            time.sleep(1)
             continue
 
         elif partymenu != "d":
             if partymenu in glossary:
                 print(glossary[partymenu])
+                input("")
+            else:
+                print("Not a valid action")
+                time.sleep(1)
             continue
 
 
