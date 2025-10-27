@@ -28,6 +28,8 @@ glossary = {"fight": "Enter the combat menu\nThis will allow you to select indiv
             "rakunda": "A move which lowers the defence of 1 enemy by one stage for 3 turns",
             "marin karin": "A move which attempts to inflict the CHARMED status on one foe.\nCharmed opponents have a 50% chance to skip their turn, or aid the opposing party",
             "hellish slash": "The exclusive move of Daemon\nThe user makes 4 weak physical attacks to 1 foe. This move has low accuracy",
+            "life stone": "A stone with magical healing properties.\nUsing this will restore 30% of one ally's HP",
+            "chakra drop": "A pot brimming with magical energy\nUsing this will restore 50MP to 1 ally",
             "amrita soda": "An extremely sweet beverage which cures all status ailments on 1 ally",
             "atk": "This character has an active effect which alters their attack",
             "atk^": "This character has an active effect which has raised their attack",

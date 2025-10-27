@@ -175,7 +175,7 @@ def fight(party, enemy):
                             input("")
                         continue
                     elif ord(itemuse) - 65 < len(items):
-                        useitem = items[ord(itemuse) - 65]
+                        useitem = items[ord(itemuse) - 65 + backer]
                         if useitem.cost <= 0:
                             print("You don't have that item!")
                             time.sleep(1)

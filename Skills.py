@@ -197,6 +197,25 @@ class chellish_slash(skill):
             return 0
 
 
+class clife_stone(skill):
+    def __init__(self):
+        super().__init__("Life Stone", "Heal", 100, 3, True, False)
+    def use(self, user, target):
+        print(target.name, "had their health restored by", str(math.floor(target.mxhp*0.3))+"!")
+        target.hp += (target.mxhp*0.3)
+        math.floor(target.hp)
+        if target.hp > target.mxhp:
+            target.hp = target.mxhp
+
+class cchakra_drop(skill):
+    def __init__(self):
+        super().__init__("Chakra Drop", "Heal", 100, 3, True, False)
+    def use(self, user, target):
+        print(target.name, "regained 50MP!")
+        target.mp += 50
+        if target.mp > target.mxmp:
+            target.mp = target.mxmp
+
 class camrita_soda(skill):
     def __init__(self):
         super().__init__("Amrita Soda", "Heal", 100, 3, True, False)
@@ -224,11 +243,13 @@ rakunda = crakunda()
 marin_karin = cmarin_karin()
 hellish_slash = chellish_slash()
 
+life_stone = clife_stone()
+chakra_drop = cchakra_drop()
 amrita_soda = camrita_soda()
 
 ailments = [marin_karin]
 effects = ["taru", "raku", "suku", "Sleep", "Mirage", "Poison", "Confusion", "Charm", "Seal"]
-items = [amrita_soda]
+items = [life_stone, chakra_drop, amrita_soda]
 
 def skilluse(allies, enemies, user, target, move):
     x = 0
