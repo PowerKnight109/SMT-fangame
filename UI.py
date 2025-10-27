@@ -61,7 +61,7 @@ def namedisplay(subject, allied):
                 label += token[j]
 
         if not allied:
-            label = subject[i].name + ":" + label
+            label = subject[i].name + label + ":"
             mid = math.floor(len(label)/2)
             for k in range(20-mid):
                 label = " " + label

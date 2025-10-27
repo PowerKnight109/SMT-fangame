@@ -93,6 +93,7 @@ def fight(party, enemy):
                     if len(chooseskill) != 1:
                         if chooseskill.lower() in glossary:
                             print(glossary[chooseskill.lower()])
+                            input("press enter to continue")
                         continue
                     elif ord(chooseskill)-65 < len(party[baton].skills):
                         cast = party[baton].skills[ord(chooseskill) - 65]

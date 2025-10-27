@@ -20,7 +20,7 @@ def intro():
     print("THE THRONE AWAITS")
     time.sleep(2)
     toriel = input("Is this your first time playing a Shin Megami Tensei game?\nA) Yes\nB) No\n").lower()
-    if toriel == "a":
+    if toriel != "b":
         know = input("Basics of SMT combat:\n- Gain turns based on the number of allies in your party\n- Demons can be recruited to your side by talking to them (not implemented)\n- Critical hits can only be gotten through strength-based attacks\n- Hitting an enemy with a critical hit or a move they are weak to will cause you to retain that turn\n- However, missing an attack or having it nullified will cause you to lose extra turns\n- These rules apply to both enemies and allies\n- Combat ends either when all fighters on a side are killed, or when the player is killed\n[IMPORTANT] If you do not know the meaning or effect of a word, simply type it in at any point during combat to receive an explanation of what it means.\nPress enter to continue\n")
         if know.lower() in glossary:
             print(glossary[know.lower()])

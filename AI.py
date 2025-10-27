@@ -60,7 +60,7 @@ def Descartes(enemies, party):
                 reward = 1
                 if group == enemies:
                     if enemies[relay].skills[j].name == "Patra":
-                        for i in range(11, 16):
+                        for i in range(11, len(group[k].element)):
                             if group[k].element[list(group[k].element)[i]]["dur"] > 0:
                                 x += 60
                                # bounty += 40

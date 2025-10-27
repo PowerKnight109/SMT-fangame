@@ -22,6 +22,7 @@ glossary = {"fight": "Enter the combat menu\nThis will allow you to select indiv
             "mudo": "A weak magical dark attack to 1 foe.\nChance of instakill when striking weakness",
             "hama": "A weak magical light attack to 1 foe.\nChance of instakill when striking weakness",
             "dia": "A move which slightly restores 1 ally's HP",
+            "patra": "A move which cures all status ailments on 1 ally",
             "tarukaja": "A move which raises the attack of 1 ally by one stage for 3 turns",
             "sukukaja": "A move which raises the accuracy and evasion of 1 ally by one stage for 3 turns",
             "rakunda": "A move which lowers the defence of 1 enemy by one stage for 3 turns",

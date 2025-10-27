@@ -114,6 +114,19 @@ class cdia(skill):
         if target.hp > target.mxhp:
             target.hp = target.mxhp
 
+class cpatra(skill):
+    def __init__(self):
+        super().__init__("Patra", "Heal", 100, 8, True, False)
+    def use(self, user, target):
+        fixed = False
+        for i in range(11, len(target.element)):
+            if target.element[list(target.element)[i]]["dur"] > 0:
+                target.element[list(target.element)[i]]["dur"] = 0
+                print(target.name, "was cured of", list(target.element)[i] + "!")
+                fixed = True
+        if not fixed:
+            print("But", target.name, "was not suffering from any status effects")
+
 class ctarukaja(skill):
     def __init__(self):
         super().__init__("Tarukaja", "Support", 0, 10, True, False)
@@ -183,6 +196,12 @@ class chellish_slash(skill):
         else:
             return 0
 
+
+# class camrita_soda(skill):
+#     def __init__(self):
+#         super().__init__("Amrita Soda", "Heal", 100, 0, False, False)
+#     def use(self, user, target):
+
 strike = cstrike()
 agi = cagi()
 zio = czio()
@@ -190,6 +209,7 @@ bufu = cbufu()
 zan = czan()
 mudo = cmudo()
 dia = cdia()
+patra = cpatra()
 tarukaja = ctarukaja()
 sukukaja = csukukaja()
 rakunda = crakunda()
@@ -203,12 +223,13 @@ def skilluse(allies, enemies, user, target, move):
     x = 0
     ailrecformula(user)
     if user.element["Poison"]["dur"] > 0:
-        root = math.floor(user.atk + 5)
+        root = math.floor(user.str + 5)
         a = random.randint(0, math.floor(root / 10 - 1))
         if a < 0:
             a = 0
         b = random.randint(0, 3)
         psndmg = root + a + b
+        print(user.name, "took", psndmg, "damage from being poisoned!")
         user.hp -= psndmg
         if user.hp <= 0:
             print(user.name, "died!")
@@ -284,7 +305,10 @@ def skilluse(allies, enemies, user, target, move):
                         x = -1
                     if target.hp <= 0:
                         print(target.name, "died!")
-                        enemies.remove(target)
+                        if target in enemies:
+                            enemies.remove(target)
+                        else:
+                            allies.remove(target)
 
                     elif target.element["Sleep"]["dur"] > 0:
                         print(target.name, "woke up")
