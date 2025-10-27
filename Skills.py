@@ -199,7 +199,7 @@ class chellish_slash(skill):
 
 class camrita_soda(skill):
     def __init__(self):
-        super().__init__("Amrita Soda", "Heal", 100, 0, True, False)
+        super().__init__("Amrita Soda", "Heal", 100, 3, True, False)
     def use(self, user, target):
         fixed = False
         for i in range(11, len(target.element)):
