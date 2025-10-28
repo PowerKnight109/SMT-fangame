@@ -273,7 +273,7 @@ def fight(party, enemy):
                 print("This enemy does not yet have dialogue")
                 time.sleep(1)
                 continue
-            result = enemy[ord(aim)-65].script[random.randint(0, len(enemy[ord(aim)-65].script))]()
+            result = enemy[ord(aim)-65].script[random.randint(0, len(enemy[ord(aim)-65].script)-1)]()
             if result == "agg":
                 pt = 0
                 hpt = 0
