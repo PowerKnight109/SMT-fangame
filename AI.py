@@ -20,7 +20,7 @@ def memory(word):
     return antibodies
 
 
-def Descartes(enemies, party):
+def Descartes(enemies, party, egraves, pgraves):
     pt = len(enemies)
     hpt = 0
     relay = -1
@@ -51,7 +51,7 @@ def Descartes(enemies, party):
                 base = enemies[relay].element["Support"]["aff"]*5 + 5
             else:
                 base = enemies[relay].element[enemies[relay].skills[j].element]["aff"]*5 + enemies[relay].skills[j].power/10
-            if enemies[relay].skills[j].friendly:
+            if enemies[relay].skills[j].friendly == 1:
                 group = enemies
             else:
                 group = party
@@ -165,7 +165,7 @@ def Descartes(enemies, party):
 
         # for i in range(len(prioritylist)):
         #     print(prioritylist[i][2].name, prioritylist[i][1])
-        y = skilluse(enemies, party, enemies[relay], prioritylist[len(prioritylist)-1][0], prioritylist[len(prioritylist)-1][2])
+        y = skilluse(enemies, party, enemies[relay], prioritylist[len(prioritylist)-1][0], prioritylist[len(prioritylist)-1][2], [egraves, pgraves])
         time.sleep(1)
         if prioritylist[len(prioritylist)-1][2].element == "Heal":
             enemies[relay].element["Heal"]["inflict"] = 2

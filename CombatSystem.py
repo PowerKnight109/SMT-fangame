@@ -4,9 +4,12 @@ from AI import  Descartes
 from Dictionary import glossary
 from UI import namedisplay
 import time
-
+import random
+graveyard = {}
 
 def fight(party, enemy):
+    egraveyard = []
+    pgraveyard = []
     pt = len(party)
     hpt = 0
     turn = 0
@@ -68,7 +71,7 @@ def fight(party, enemy):
                         time.sleep(1)
 
                     else:
-                        attack = skilluse(party, enemy, party[baton], enemy[ord(aim)-65], strike)
+                        attack = skilluse(party, enemy, party[baton], enemy[ord(aim)-65], strike, [pgraveyard, egraveyard])
                         time.sleep(1)
                         if attack == -2:
                             pt = 0
@@ -107,8 +110,10 @@ def fight(party, enemy):
                             time.sleep(1)
                             continue
                         else:
-                            if cast.friendly:
+                            if cast.friendly == 1:
                                 group = party
+                            elif cast.friendly == 2:
+                                group = pgraveyard
                             else:
                                 group = enemy
                             if len(group) == 1:
@@ -134,7 +139,7 @@ def fight(party, enemy):
                                 continue
 
 
-                            used = skilluse(party, enemy, party[baton], group[ord(aim)-65], cast)
+                            used = skilluse(party, enemy, party[baton], group[ord(aim)-65], cast, [pgraveyard, egraveyard])
                             time.sleep(1)
                             if used == -2:
                                 pt = 0
@@ -181,11 +186,17 @@ def fight(party, enemy):
                             time.sleep(1)
                             continue
                         else:
-                            if useitem.friendly:
+                            if useitem.friendly == 1:
                                 group = party
+                            elif useitem.friendly == 2:
+                                group = pgraveyard
                             else:
                                 group = enemy
-                            if len(group) == 1:
+                            if len(group) < 1:
+                                print("There's no-one to target!")
+                                time.sleep(1)
+                                continue
+                            elif len(group) == 1:
                                 aim = "A"
                             else:
                                 print("Who will you target?")
@@ -207,7 +218,7 @@ def fight(party, enemy):
                                 time.sleep(1)
                                 continue
 
-                            skilluse(party, enemy, party[baton], group[ord(aim) - 65], useitem)
+                            skilluse(party, enemy, party[baton], group[ord(aim) - 65], useitem, [pgraveyard, egraveyard])
                             time.sleep(1)
 
                             if hpt > 0:
@@ -232,12 +243,52 @@ def fight(party, enemy):
                         time.sleep(1)
                     continue
 
+                for i in range(len(pgraveyard)):
+                    if pgraveyard[i].hp > 0:
+                        party.append(pgraveyard[i])
+                        pgraveyard.remove(pgraveyard[i])
+
                 baton += 1
 
 
 
         elif partymenu == "b":
-            print("This feature has not been implemented yet")
+            print("Who will you talk to?")
+            for i in range(len(enemy)):
+                print(chr(i + 65) + ")", enemy[i].name)
+            aim = input().upper()
+            if len(aim) != 1:
+                if aim.lower() in glossary:
+                    print(glossary[aim.lower()])
+                    input("")
+                else:
+                    print("That is not a valid target!")
+                    time.sleep(1)
+                continue
+            elif ord(aim) - 65 >= len(enemy):
+                print("That is not a valid target!")
+                time.sleep(1)
+                continue
+            elif len(enemy[ord(aim)-65].script) == 0:
+                print("This enemy does not yet have dialogue")
+                time.sleep(1)
+                continue
+            result = enemy[ord(aim)-65].script[random.randint(0, len(enemy[ord(aim)-65].script))]()
+            if result == "agg":
+                pt = 0
+                hpt = 0
+            elif result == "flee":
+                print(enemy[ord(aim)-65], "left the battle!")
+                enemy.remove(enemy[ord(aim)-65])
+                if result == "rec":
+                    party.append(enemy[ord(aim)-65])
+                    enemy.remove(enemy[ord(aim)-65])
+                elif turn == "none":
+                    if enemy[ord(aim)-65].hp <= 0:
+                        egraveyard.append(enemy[ord(aim)-65])
+                        enemy.remove(enemy[ord(aim)-65])
+                    time.sleep(1)
+                    continue
             time.sleep(1)
             continue
         elif partymenu == "c":
@@ -281,7 +332,7 @@ def fight(party, enemy):
                     end = input("Press enter to continue\n").lower()
                     if end.lower() in glossary:
                         print(glossary[end.lower()])
-                        input("")
+
                     else:
                         break
                 continue
@@ -316,7 +367,7 @@ def fight(party, enemy):
             return True
 
         print("[ENEMY TURN]")
-        Descartes(enemy, party)
+        Descartes(enemy, party, egraveyard, pgraveyard)
         turn +=1
         pt = len(party)
         for i in range(len(combatants)):

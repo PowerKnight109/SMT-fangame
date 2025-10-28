@@ -1,10 +1,10 @@
-from contextlib import nullcontext
+# from contextlib import nullcontext
 from CharacterSheets import player, pixie, pixie1, daemon
-from CombatSystem import fight
+# from CombatSystem import fight
 import time
 import random
-from Dictionary import glossary
-#from UI import namedisplay, vision
+# from Dictionary import glossary
+# #from UI import namedisplay, vision
 
 
 from Formulas import ailformula
@@ -92,43 +92,6 @@ a = ("               %#*###%%%%%%%%\n            %#%%%@@@@@@@     @  @@%%%%\n   
 #print("                        %*+#%\n                       %%%%%##*\n                      %%@@%%%#%\n                       %@@%=-%@\n                         @+=+#\n                       @@%%+%%%**\n                      @@#=+=*##**##\n                    @ @#-=-+%#%@**#%\n                    @%@+=+=#@@@@%@#%%%\n                     @@*-==%@@@   @%*+%\n              @@@@@%%@#====+%@@  %##@@\n            %%%@%%@*@@+=====#%%#**@@\n          @%%   %%@%%#+=-:==*%%%@#\n                  %@++==*%%%%%*#%%@\n                 ###%@@%#%%==+**#@@@\n               %*#@@@@@@@@#:-#@ *#@\n                ##@@%@@@@@@%-=@  %\n               ######@@@@@@@@@#@\n             ##* #@ +@@@@@@@@**#%\n            ==      *@@@@  @@#**#\n          *+=       *@@@@   @@***@\n        **+         #%@@@    @@*##\n       -+%           #@@@     @@##@\n     --#             *@@@      @%%@@\n   ==#               *@@@       %@@@@\n  +*%                *@@@        %@@@@\n**#                  #@@@         @@@@@\n                     #@@@          @@@@\n                     %@@@           @#@@\n                     @@@            @@#%\n                    %@@@             @%##\n                    @@@@             @@%#@\n                   #@@@#               @@#%\n                 %@%%%                 @@#%\n                                        %%#\n")
 
 
-enemies = [daemon]
-
-def vision(spriteselect):
-    sprite = ""
-    retainers = []
-    track = 0
-
-    for i in range(len(spriteselect)):
-        retainers.append(0)
-
-    #time.sleep(3)
-    #
-    # while len(spriteselect) > 0:
-    #     print(retainers)
-    #     print(track)
-    #     if retainers[track] < (len(spriteselect[track].image)):
-    #         # counter += 1
-    #         # print(counter)
-    #         if spriteselect[track].image[retainers[track]] == "\n":
-    #             if retainers[track] == len(spriteselect[track].image) - 1:
-    #                 spriteselect.remove(spriteselect[track])
-    #             elif track >= len(spriteselect)-1:
-    #                 sprite += (spriteselect[track].image[retainers[track]])
-    #
-    #             else:
-    #                 retainers[track] += 1
-    #                 sprite += "             "
-    #
-    #             track += 1
-    #             if track >= len(spriteselect):
-    #                 track = 0
-    #
-    #
-    #         else:
-    #             sprite += (spriteselect[track].image[retainers[track]])
-    #
-    #         retainers[track] += 1
 
 
 print("                        ░░░░░      ░░░\n                      ░░░      ░░░░░░░░░\n                     ░░░░   ░░░░░░   ░░░\n                    ░░░░░ ░░░░░░░░\n                   ▒░░░░░░░░░░░░░\n                   ▒░░░▒░░░░░░░░\n                  ▒▒▒▒▒▒░░░░░░░\n            ▓▓████▒▒▒▒▒▒░░░░░░░░░░\n           ▓▒▓▓▓█▓▓▒▒▒░▒░░░░░ ░░  ░\n           ▒▓▓▒▒▒▒▓▒▒▒▒▒▒░░░     ░░\n           ██▓░░░▓▓▒░░▒▒▒▒▒\n               ░▒▓▓▓▒░░▒ ▒▒\n                 ▒▓▓▓▒░▓   ▒\n                  ▓▓▓▓▓▓█ ░░\n                   ▓▓▓█▓▓▓\n                  ▓▓▓▓██▓▓█\n           ▓▓▓▓▒▓▒▒░░░▓█▓▓▓█\n          ▓▓▓█▓▓██▒▒▒▒▓██▓▓▓▓██\n        ▓▓▓██████▓▒▒▒▓██   ▓▓▓▓\n       ▓▓▓████\n     ▓▓▓▓▓█▓▓██\n   ▓▓▓▓▓    ▓▓▓█\n ▓▓▓██       ▓▓▓█\n▓▓██          ▓▓██\n█              ▓▓█\n                ██\n")
@@ -199,5 +162,4 @@ print("          ▓▓▓▓▓▓███████                 \n     
 
 print("                       #+-+#            \n                     #####+++           \n                    ######++#           \n                      ##+..##           \n                    ####+-++            \n                     ##++-++++++        \n                    ###.--#+#+-++       \n                    #+-.-+####+#++      \n                   ##++--#### ####++    \n              ##+++##+--.+###   +++#    \n           #######+##-----####+####     \n          #+# ######--...-+#+###        \n                 ##--++++++#+##+#       \n                ++#+#++#+-+-++###       \n              ++#########..##++##       \n               +##########.-# ##        \n              ++#+#+##########          \n            +++ +# -#### ##+++          \n           --      +####  #+++#         \n         +--       +###    #+++#        \n       --+         ####     #++#        \n      .-           +###     ##+##       \n    ..+            +###      #####      \n   .+              +###       +####     \n ++                 ###        #####    \n+#                  ###         ####    \n                   ####          ####   \n                   ####           #+#   \n                   ####           ##++  \n                   ####            ##++ \n                  ####+             ### \n                #####               ##+#\n                                     ##+\n")
 #appends each character to list. If reaches \, jumps to second character and appends words. Does this for all characters in party, looping when it exceeds max party size. Stops when all characters image files have been read.
-
-fight([player, pixie], [daemon, pixie1])
+print('(sarcastically) "'+"Oh no, I'm so sorry"+'"')

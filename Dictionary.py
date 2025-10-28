@@ -31,6 +31,8 @@ glossary = {"fight": "Enter the combat menu\nThis will allow you to select indiv
             "life stone": "A stone with magical healing properties.\nUsing this will restore 30% of one ally's HP",
             "chakra drop": "A pot brimming with magical energy\nUsing this will restore 50MP to 1 ally",
             "amrita soda": "An extremely sweet beverage which cures all status ailments on 1 ally",
+            "revival bead": "A prayer bead charged with miracles. Using this will revive one ally at 50% of their HP",
+            "macca": "The currency used by demons of the netherworld.\nMacca can be used to strike bargains with demons, or to possibly buy items",
             "atk": "This character has an active effect which alters their attack",
             "atk^": "This character has an active effect which has raised their attack",
             "atk^^": "This character has an active effect which has raised their attack",

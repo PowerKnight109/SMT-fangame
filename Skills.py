@@ -13,7 +13,7 @@ class skill:
 
 class cstrike(skill):
     def __init__(self):
-        super().__init__("Strike", "Physical", 100, 0, False, False)
+        super().__init__("Strike", "Physical", 100, 0, 0, False)
     def use(self, user, target):
         if accformula(user, target, 98):
             damage = dmgformula(user, target,"Physical", 100, 0)
@@ -28,7 +28,7 @@ class cstrike(skill):
 
 class cagi(skill):
     def __init__(self):
-        super().__init__("Agi", "Fire", 130, 10, False, False)
+        super().__init__("Agi", "Fire", 130, 10, 0, False)
     def use(self, user, target):
         if accformula(user, target, 98):
             damage = dmgformula(user, target,"Fire", 130, 0)
@@ -43,7 +43,7 @@ class cagi(skill):
 
 class czio(skill):
     def __init__(self):
-        super().__init__("Zio", "Lightning", 130, 10, False, False)
+        super().__init__("Zio", "Lightning", 130, 10, 0, False)
     def use(self, user, target):
         if accformula(user, target, 98):
             damage = dmgformula(user, target,"Lightning", 130, 0)
@@ -58,7 +58,7 @@ class czio(skill):
 
 class cbufu(skill):
     def __init__(self):
-        super().__init__("Bufu", "Ice", 130, 10, False, False)
+        super().__init__("Bufu", "Ice", 130, 10, 0, False)
     def use(self, user, target):
         if accformula(user, target, 98):
             damage = dmgformula(user, target,"Ice", 130, 0)
@@ -88,7 +88,7 @@ class czan(skill):
 
 class cmudo(skill):
     def __init__(self):
-        super().__init__("Mudo", "Dark", 140, 15, False, False)
+        super().__init__("Mudo", "Dark", 140, 15, 0, False)
     def use(self, user, target):
         if accformula(user, target, 98):
             damage = dmgformula(user, target,"Dark", 140, 0)
@@ -106,7 +106,7 @@ class cmudo(skill):
 
 class cdia(skill):
     def __init__(self):
-        super().__init__("Dia", "Heal", 100, 8, True, False)
+        super().__init__("Dia", "Heal", 100, 8, 1, False)
     def use(self, user, target):
         heal = healformula(user, target, 10, 0.15)
         print(target.name, "recovered", heal, "points of damage!")
@@ -116,7 +116,7 @@ class cdia(skill):
 
 class cpatra(skill):
     def __init__(self):
-        super().__init__("Patra", "Heal", 100, 8, True, False)
+        super().__init__("Patra", "Heal", 100, 8, 1, False)
     def use(self, user, target):
         fixed = False
         for i in range(11, len(target.element)):
@@ -129,7 +129,7 @@ class cpatra(skill):
 
 class ctarukaja(skill):
     def __init__(self):
-        super().__init__("Tarukaja", "Support", 0, 10, True, False)
+        super().__init__("Tarukaja", "Support", 0, 10, 1, False)
     def use(self, user, target):
         if target.buffs["taru"]["stage"] >= 2:
             print("But their offensive stats were already maxed out!")
@@ -141,7 +141,7 @@ class ctarukaja(skill):
 
 class csukukaja(skill):
     def __init__(self):
-        super().__init__("Sukukaja", "Support", 0, 10, True, False)
+        super().__init__("Sukukaja", "Support", 0, 10, 1, False)
     def use(self, user, target):
         if target.buffs["suku"]["stage"] >= 2:
             print("But their evasive stats were already maxed out!")
@@ -153,7 +153,7 @@ class csukukaja(skill):
 
 class crakunda(skill):
     def __init__(self):
-        super().__init__("Rakunda", "Support", 0, 10, False, False)
+        super().__init__("Rakunda", "Support", 0, 10, 0, False)
     def use(self, user, target):
         if target.buffs["suku"]["stage"] <= -2:
             print("But their defensive stats were already at rock bottom!")
@@ -165,7 +165,7 @@ class crakunda(skill):
 
 class cmarin_karin(skill):
     def __init__(self):
-        super().__init__("Marin Karin", "Charm", 0, 10, False, False)
+        super().__init__("Marin Karin", "Charm", 0, 10, 0, False)
     def use(self, user, target):
         if ailformula(user, target, "Charm", 70) >= random.randint(0, 100):
             print(target.name, "became charmed!")
@@ -182,7 +182,7 @@ class cmarin_karin(skill):
 
 class chellish_slash(skill):
     def __init__(self):
-        super().__init__("Hellish Slash", "Physical", 55, 5, False, False)
+        super().__init__("Hellish Slash", "Physical", 55, 5, 0, False)
     def use(self, user, target):
         if accformula(user, target, 50):
             for i in range(4):
@@ -199,7 +199,7 @@ class chellish_slash(skill):
 
 class clife_stone(skill):
     def __init__(self):
-        super().__init__("Life Stone", "Heal", 100, 3, True, False)
+        super().__init__("Life Stone", "Heal", 100, 3, 1, False)
     def use(self, user, target):
         print(target.name, "had their health restored by", str(math.floor(target.mxhp*0.3))+"!")
         target.hp += (target.mxhp*0.3)
@@ -209,7 +209,7 @@ class clife_stone(skill):
 
 class cchakra_drop(skill):
     def __init__(self):
-        super().__init__("Chakra Drop", "Heal", 100, 3, True, False)
+        super().__init__("Chakra Drop", "Heal", 100, 3, 1, False)
     def use(self, user, target):
         print(target.name, "regained 50MP!")
         target.mp += 50
@@ -218,7 +218,7 @@ class cchakra_drop(skill):
 
 class camrita_soda(skill):
     def __init__(self):
-        super().__init__("Amrita Soda", "Heal", 100, 3, True, False)
+        super().__init__("Amrita Soda", "Heal", 100, 3, 1, False)
     def use(self, user, target):
         fixed = False
         for i in range(11, len(target.element)):
@@ -228,6 +228,13 @@ class camrita_soda(skill):
                 fixed = True
         if not fixed:
             print("But", target.name, "was not suffering from any status effects")
+
+class crevival_bead(skill):
+    def __init__(self):
+        super().__init__("Revival Bead", "Heal", 100, 1, 2, False)
+    def use(self, user, target):
+        print(target.name, "was revived!")
+        target.hp = target.mxhp/2
 
 strike = cstrike()
 agi = cagi()
@@ -246,12 +253,14 @@ hellish_slash = chellish_slash()
 life_stone = clife_stone()
 chakra_drop = cchakra_drop()
 amrita_soda = camrita_soda()
+revival_bead = crevival_bead()
 
 ailments = [marin_karin]
 effects = ["taru", "raku", "suku", "Sleep", "Mirage", "Poison", "Confusion", "Charm", "Seal"]
-items = [life_stone, chakra_drop, amrita_soda]
+items = [life_stone, chakra_drop, amrita_soda, revival_bead]
 
-def skilluse(allies, enemies, user, target, move):
+def skilluse(allies, enemies, user, target, move, grave):
+    #grave[0] = user's graveyard, grave[1] = target graveyard
     x = 0
     ailrecformula(user)
     if user.element["Poison"]["dur"] > 0:
@@ -265,7 +274,10 @@ def skilluse(allies, enemies, user, target, move):
         user.hp -= psndmg
         if user.hp <= 0:
             print(user.name, "died!")
-            allies.remove(target)
+            grave[0].append(user)
+            allies.remove(user)
+
+
 
     ailchance = random.randint(0, 100)
     if user.element["Sleep"]["dur"] > 0:
@@ -286,7 +298,7 @@ def skilluse(allies, enemies, user, target, move):
         elif user.element["Charm"]["dur"] > 0 and ailchance <=50:
             charmskill = []
             for i in range(len(user.skills)):
-                if user.skills[i].friendly:
+                if user.skills[i].friendly == 1:
                     charmskill.append(user.skills[i])
             if len(charmskill) < 1:
                 print(user.name, "is too charmed to move!")
@@ -319,8 +331,9 @@ def skilluse(allies, enemies, user, target, move):
                     print(user.name, "took", pure, "points of damage!")
                     user.hp -= pure
                     if user.hp <= 0:
-                        print(target.name, "died!")
-                        allies.remove(target)
+                        print(user.name, "died!")
+                        grave[0].append(user)
+                        allies.remove(user)
 
                 else:
                     pure = dmgformula(user, user, "Almighty", move.power, -999)[0]
@@ -341,8 +354,10 @@ def skilluse(allies, enemies, user, target, move):
                     if target.hp <= 0:
                         print(target.name, "died!")
                         if target in enemies:
+                            grave[1].append(target)
                             enemies.remove(target)
                         else:
+                            grave[0].append(target)
                             allies.remove(target)
 
                     elif target.element["Sleep"]["dur"] > 0:
