@@ -1,5 +1,6 @@
 import random
 import math
+import time
 
 
 def accformula(attacker, evader, move):
@@ -181,3 +182,42 @@ def healformula(user, target, move, perc):
     pot = [0.6, 0.75, 0.8, 0.85, 0.9, 1, 1.1, 1.15, 1.2, 1.25, 1.4]
     recover = root * pot[5 + user.element["Heal"]["aff"]]
     return math.floor(recover)
+
+def xpformula(player, party, corpses):
+    from  CharacterSheets import pclv
+    for i in range(len(party)):
+        totalxp = 0
+        for j in range(len(corpses)):
+            lvdiff = corpses[i].lv - party[i].lv
+            if lvdiff > 10:
+                lvdiff = 10
+            if lvdiff < -10:
+                lvdiff = -10
+            totalxp += math.floor(corpses[j].xp * (1.15 ** lvdiff))
+        print(party[i].name, "gained", totalxp, "experience points!")
+        if party[i] == player:
+            slow = 1
+        else:
+            slow = 1.5
+        while party[i].xp >= math.floor(((party[i].lv / 0.7398043555) ** 2.685888979) * slow):
+            print(party[i].name, "levelled up!\n")
+            time.sleep(1)
+            party[i].xp -= math.floor(((party[i].lv / 0.7398043555) ** 2.685888979) * slow)
+            party[i].lv += 1
+            if party[i] == player:
+                pclv()
+        print("XP required for next level:", math.floor(((party[i].lv / 0.7398043555) ** 2.685888979) * slow))
+            # else:
+            #     allylv()
+
+def lvformula(player, party, corpses):
+    from CharacterSheets import pclv
+    from CharacterSheets import dlv
+    for i in range(len(party)):
+        for j in range(len(corpses)):
+            print(party[i].name, "levelled up!")
+            time.sleep(1)
+            if party[i] == player:
+                pclv()
+            else:
+               dlv(party[i])

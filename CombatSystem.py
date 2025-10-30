@@ -1,7 +1,7 @@
 from Skills import strike, skilluse, effects, items
 from CharacterSheets import player
 from AI import  Descartes
-from Dictionary import glossary
+from Dictionary import lookup, glossary
 from UI import namedisplay
 import time
 import random
@@ -60,12 +60,7 @@ def fight(party, enemy):
                         aim = input().upper()
 
                     if len(aim) != 1:
-                        if aim.lower() in glossary:
-                            print(glossary[aim.lower()])
-                            input("Press enter to continue\n")
-                        else:
-                            print("That is not a valid target!")
-                            time.sleep(1)
+                        lookup(aim)
                     elif ord(aim) - 65 >= len(enemy):
                         print("That is not a valid target!")
                         time.sleep(1)
@@ -96,9 +91,7 @@ def fight(party, enemy):
 
                     chooseskill = input().upper()
                     if len(chooseskill) != 1:
-                        if chooseskill.lower() in glossary:
-                            print(glossary[chooseskill.lower()])
-                            input("")
+                        lookup(chooseskill)
                         continue
                     elif ord(chooseskill)-65 < len(party[baton].skills):
                         cast = party[baton].skills[ord(chooseskill) - 65]
@@ -125,14 +118,8 @@ def fight(party, enemy):
                                 aim = input().upper()
 
                             if len(aim) != 1:
-                                if aim.lower() in glossary:
-                                    print(glossary[aim.lower()])
-                                    input("")
-                                else:
-                                    print("That is not a valid target!")
-                                    time.sleep(1)
+                                lookup(chooseskill)
                                 continue
-
                             elif ord(aim) - 65 >= len(group):
                                 print("That is not a valid target!")
                                 time.sleep(1)
@@ -175,9 +162,7 @@ def fight(party, enemy):
                         continue
                     itemuse = input("Which item would you like to use?\n").upper()
                     if len(itemuse) != 1:
-                        if itemuse.lower() in glossary:
-                            print(glossary[itemuse.lower()])
-                            input("")
+                        lookup(itemuse)
                         continue
                     elif ord(itemuse) - 65 < len(items):
                         useitem = items[ord(itemuse) - 65 + backer]
@@ -205,13 +190,7 @@ def fight(party, enemy):
                                 aim = input().upper()
 
                             if len(aim) != 1:
-                                if aim.lower() in glossary:
-                                    print(glossary[aim.lower()])
-                                    input("")
-                                else:
-                                    print("That is not a valid target!")
-                                    time.sleep(1)
-                                continue
+                                lookup(aim)
 
                             elif ord(aim) - 65 >= len(group):
                                 print("That is not a valid target!")
@@ -235,13 +214,7 @@ def fight(party, enemy):
 
 
                 else:
-                    if unitmenu in glossary:
-                        print(glossary[unitmenu])
-                        input("")
-                    else:
-                        print("You can't do that yet")
-                        time.sleep(1)
-                    continue
+                   lookup(unitmenu)
 
                 for i in range(len(pgraveyard)):
                     if pgraveyard[i].hp > 0:
@@ -258,51 +231,50 @@ def fight(party, enemy):
                 print(chr(i + 65) + ")", enemy[i].name)
             aim = input().upper()
             if len(aim) != 1:
-                if aim.lower() in glossary:
-                    print(glossary[aim.lower()])
-                    input("")
-                else:
-                    print("That is not a valid target!")
-                    time.sleep(1)
-                continue
+                lookup(aim)
             elif ord(aim) - 65 >= len(enemy):
                 print("That is not a valid target!")
                 time.sleep(1)
                 continue
-            elif len(enemy[ord(aim)-65].script) == 0:
+            elif enemy[ord(aim)-65].lines == "":
                 print("This enemy does not yet have dialogue")
                 time.sleep(1)
                 continue
-            result = enemy[ord(aim)-65].script[random.randint(0, len(enemy[ord(aim)-65].script)-1)]()
-            if result == "agg":
-                pt = 0
-                hpt = 0
-            elif result == "flee":
-                print(enemy[ord(aim)-65], "left the battle!")
-                enemy.remove(enemy[ord(aim)-65])
-                if result == "rec":
-                    party.append(enemy[ord(aim)-65])
+            result = enemy[ord(aim)-65].lines.opening[random.randint(0, len(enemy[ord(aim)-65].lines.opening)-1)]()
+            if result == "aggro":
+                print("The", enemy[ord(aim) - 65].name, "became aggravated!")
+                enemy[ord(aim)-65].coward -= 30
+
+            elif result == "none":
+                #print("I am the nothingman")
+                if enemy[ord(aim)-65].hp <= 0:
+                    egraveyard.append(enemy[ord(aim)-65])
                     enemy.remove(enemy[ord(aim)-65])
-                elif turn == "none":
-                    if enemy[ord(aim)-65].hp <= 0:
-                        egraveyard.append(enemy[ord(aim)-65])
-                        enemy.remove(enemy[ord(aim)-65])
-                    time.sleep(1)
+                time.sleep(1)
+                continue
+            else:
+                if result == "flee":
+                    print("The", enemy[ord(aim) - 65].name, "left the battle!")
+                elif result == "recruit":
+                    party.append(enemy[ord(aim) - 65])
+                    print(enemy[ord(aim) - 65].lines.recruited)
+                    enemy[ord(aim)-65].xp = 0
+
+                enemy.remove(enemy[ord(aim) - 65])
+                if len(enemy) > 0:
                     continue
-            time.sleep(1)
-            continue
+
+
+
         elif partymenu == "c":
             print("Who do you want to analyze?")
             for i in range(len(combatants)):
                 print(chr(i + 65) + ")", combatants[len(combatants)-i-1].name)
                 if i == len(enemy)-1:
-                    print("\n")
+                    print("")
             choose = input().upper()
             if len(str(choose)) != 1:
-                if choose.lower() in glossary:
-                    print(glossary[partymenu])
-                    input("")
-                continue
+                lookup(choose)
             elif ord(choose) - 65 < len(combatants):
                 observee = combatants[len(combatants)-(ord(choose)-64)]
                 print(observee.image, "\n"+observee.name, "(lv" + str(observee.lv) + ")\n" + "species:", observee.race, "\nHP:",
@@ -329,10 +301,9 @@ def fight(party, enemy):
                 for i in range(len(observee.skills)):
                     print(observee.skills[i].name)
                 while True:
-                    end = input("Press enter to continue\n").lower()
+                    end = input("Press enter to return to combat\n").lower()
                     if end.lower() in glossary:
                         print(glossary[end.lower()])
-
                     else:
                         break
                 continue
@@ -351,20 +322,14 @@ def fight(party, enemy):
             continue
 
         elif partymenu != "d":
-            if partymenu in glossary:
-                print(glossary[partymenu])
-                input("")
-            else:
-                print("Not a valid action")
-                time.sleep(1)
-            continue
+            lookup(partymenu)
 
 
 
 
         if len(enemy) < 1:
             print("You won the battle")
-            return True
+            return [party, egraveyard]
 
         print("[ENEMY TURN]")
         Descartes(enemy, party, egraveyard, pgraveyard)
@@ -374,13 +339,14 @@ def fight(party, enemy):
             for j in range(3):
                 if combatants[i].buffs[effects[j]]["dur"] > 0:
                     combatants[i].buffs[effects[j]]["dur"] -= 1
+        time.sleep(1)
 
 
 
 
         if len(party) < 1 or player not in party:
             print("enemies win")
-            return False
+            return [party, egraveyard]
 
 
 

@@ -1,4 +1,4 @@
-
+import time
 glossary = {"fight": "Enter the combat menu\nThis will allow you to select individual actions for each unit in your party.",
             "talk": "Strike up a conversation with the enemy and attempt to recruit them to your side",
             "status": "View information on a demon, such as their stats, moves and weaknesses",
@@ -11,23 +11,34 @@ glossary = {"fight": "Enter the combat menu\nThis will allow you to select indiv
             "mp": "A demon's magic points.\nAll skills require a certain amount of MP to use",
             "attack":"launch a weak, physical attack on the enemy\nThis costs 0 MP",
             "skill": "Enter the skills menu\nThese are more powerful actions a demon can perform in combat which have a variety of effects",
+            "skills": "These are more powerful actions a demon can perform in combat which have a variety of effects",
             "item": "Enter the item menu\nThis will allow you to use items to restore your HP/MP",
             "guard": "Brace yourself and take reduced damage from attacks for 1 turn\nThis will also prevent attacks against you from being critical",
             "pass": "Switch to the next party member\nDoing this will convert 1 turn into a Half Turn",
-            "strike": "A very weak physical attack to 1 foe",
-            "agi": "A weak magical fire attack to 1 foe",
-            "zio": "A weak magical electric attack to 1 foe",
-            "bufu": "A weak magical ice attack to 1 foe",
-            "zan": "A weak magical force attack to 1 foe",
-            "mudo": "A weak magical dark attack to 1 foe.\nChance of instakill when striking weakness",
-            "hama": "A weak magical light attack to 1 foe.\nChance of instakill when striking weakness",
+            "strike": "The user attacks one target with their sword, claws, or other weapons dealing 100 physical damage\nThis move does not use any MP",
+            "lunge": "The user lunges at a single target and attacks them, dealing 145 physical damage",
+            "bestial bite": "The user attacks a single target by biting down them, dealing 130 physical damage.\nIf the attack is a critical hit, the base damage is increased to 200.",
+            "gram slice": "The user slashes at a single target with their sword, dealing 140 physical damage.\nThis move has an increased chance to be a critical hit.",
+            "agi": "The user lobs a ball of fire at a single foe, dealing 130 fire damage",
+            "zio": "The user shoots a bolt of electricity at a single target, dealing 130 electric damage",
+            "bufu": "The user blows an icy wind towards a single target, dealing 130 ice damage",
+            "zan": "The user fires a burst of force towards a single target, dealing 130 force damage",
+            "mudo": "The user surrounds a target with demonic energy, dealing 140 dark damage.\nThis move has a chance to instantly kill targets who are weak to it.",
+            "hama": "The user surrounds a single target with holy energy, dealing 140 light damage.\nThis move has a chance to instantly kill targets who are weak to it.",
+            "megido": "The user unleashes a burst of magical energy, dealing 125 almighty damage to all foes",
+            "megidola": "The user unleashes an explosion of magical energy, dealing 160 almighty damage to all foes",
             "dia": "A move which slightly restores 1 ally's HP",
             "patra": "A move which cures all status ailments on 1 ally",
             "tarukaja": "A move which raises the attack of 1 ally by one stage for 3 turns",
             "sukukaja": "A move which raises the accuracy and evasion of 1 ally by one stage for 3 turns",
             "rakunda": "A move which lowers the defence of 1 enemy by one stage for 3 turns",
-            "marin karin": "A move which attempts to inflict the CHARMED status on one foe.\nCharmed opponents have a 50% chance to skip their turn, or aid the opposing party",
-            "hellish slash": "The exclusive move of Daemon\nThe user makes 4 weak physical attacks to 1 foe. This move has low accuracy",
+            "dormina": "The user casts a hypnotic spell on a single foe, which has an 80% chance to inflict them with the SLEEP status",
+            "dustoma": "The user summons strange illusions to cloud the target's vision, which has a 75% chance to inflict them with the MIRAGE status",
+            "marin karin": "The user unleashes a wave of cuteness towards a single foe, which has a 70% chance to inflict them with the CHARMED status",
+            "poisma": "The user attempts to cast a spell to inflict the POISONED status on a single foe. This move has an 85% chance of succeeding",
+            "pulinpa": "The user attempts to use magic to scramble a target's mind, which has a 70% chance of inflicting the CONFUSED status on a single foe.",
+            "makajama": "The user attempts cast a seal on a single target's magical abilities, which has a 65% chance of inflicting them with the SEALED status",
+            "hellish slash": "The exclusive move of Daemon\nThe user makes 4 weak physical attacks to 1 foe with their pitchfork. This move has low accuracy",
             "life stone": "A stone with magical healing properties.\nUsing this will restore 30% of one ally's HP",
             "chakra drop": "A pot brimming with magical energy\nUsing this will restore 50MP to 1 ally",
             "amrita soda": "An extremely sweet beverage which cures all status ailments on 1 ally",
@@ -70,15 +81,24 @@ glossary = {"fight": "Enter the combat menu\nThis will allow you to select indiv
             "support": "Support skills are skills which empower allies or weaken enemies, without directly dealing damage",
             "almighty": "Raw magic power in its purest form, free of any elemental properties.\nAlmighty skills will always deal neutral damage, they cannot be resisted or hit weaknesses.",
             "race": "The race this demon belongs to",
-            "str": "The demon's physical strength\nThis will determine the power of their physical attacks",
-            "vit": "The demon's vitality\nThis will determine their max health and how much taken damage will be reduced",
-            "mag": "The demon's magic power\nThis will determine the power of their magical attacks, and their max MP",
-            "agl": "The demon's agility\nThis will determine the likelihood of them dodging and successfully landing attacks",
-            "lck": "The demon's luck\nThis will determine their likelihood of landing critical hits\nIt also slightly boosts the demon's likelihood of dodging and successfully landing attacks",
+            "str": "A demon's physical strength\nThis will affect the power of their physical attacks",
+            "strength": "A demon's physical strength\nThis will affect the power of their physical attacks",
+            "vit": "A demon's vitality\nThis will affect their max health and how much damage they take from attacks",
+            "vitality": "A demon's constitution\n This will affect their max health and how much damage they take from attacks",
+            "mag": "A demon's magic power\nThis will affect the power of their magical attacks, as well as their max MP",
+            "magic": "A demon's magic power\nThis will affect the power of their magical attacks, as well as their max MP",
+            "agl": "A demon's agility\nThis will affect the likelihood of them dodging and successfully landing attacks",
+            "agility": "A demon's dexterity\nThis will affect the likelihood of them dodging and successfully landing attacks",
+            "lck": "A demon's luck\nThis will affect their likelihood of landing critical hits\nIt also slightly boosts the demon's likelihood of dodging and successfully landing attacks",
+            "luck": "A demon's luck\nThis will affect their likelihood of landing critical hits\nIt also slightly boosts the demon's likelihood of dodging and successfully landing attacks",
             "weakness": "If a demon is weak to an element, they will take extra damage from moves of that element\nIf a demon is weak to a status effect, they will have a much more higher chance of being inflicted with that effect by moves\n When a demon is hit by a move it is weak to, the opposing side will gain 1 half turn",
             "resist": "If a demon resists an element, damage taken from moves of that element will be halved",
             "null": "If a demon nullifies an element, they will take no damage from attacks of that type, and the opposing side will lose 2 turns",
             "drain": "If a demon drains an element, attacks of that type will heal them instead of dealing damage, and the opposing side will lose all of their turns",
+            "affinities": "A demon's natural aptitude with a particular element.\nWhen using skills, the move's effectiveness will be impacted by the demon's affinity for the corresponding element.",
+            "affinity": "A demon's natural aptitude with a particular element.\nWhen using skills, the move's effectiveness will be impacted by the demon's affinity for the corresponding element.",
+            "skill affinities": "A demon's natural aptitude with a particular element.\nWhen using skills, the move's effectiveness will be impacted by the demon's affinity for the corresponding element.",
+            "skill affinity": "A demon's natural aptitude with a particular element.\nWhen using skills, the move's effectiveness will be impacted by the demon's affinity for the corresponding element.",
             "repel": "If a demon repels an element, damage from attacks of that type will be dealt to the person who used it, instead of this demon. Additionally, the opposing side will lose all of their turns",
             "demon summoning program": "A mysterious program gifted to the new rulers which allows them to do battle with demons\nThe program works by using code to emulate the conditions and acts required to perform rituals\nThree key rituals that the program simulates are:\n1) Evocationis Daemonum: Allows the performer to summon demons, and use them in battle\n2) Ritum Harmonice: Attunes the player's wavelengths to the demon world, allowing demons to be harmed by their attacks, while allowing the user to survive normally fatal attacks\n3) Ritus Magiae: Combines multiple other rituals to drastically simplify the spellcasting process, allowing the user to effortlessly cast spells with no prior experience",
             "demon_summoning_program.exe": "A mysterious program gifted to the new rulers which allows them to do battle with demons\nThe program works by using code to emulate the conditions and acts required to perform rituals\nThree key rituals that the program simulates are:\n1) Evocationis Daemonum: Allows the performer to summon demons, and use them in battle\n2) Ritum Harmonice: Attunes the player's wavelengths to the demon world, allowing demons to be harmed by their attacks, while allowing the user to survive normally fatal attacks\n3) Ritus Magiae: Combines multiple other rituals to drastically simplify the spellcasting process, allowing the user to effortlessly cast spells with no prior experience",
@@ -89,3 +109,15 @@ glossary = {"fight": "Enter the combat menu\nThis will allow you to select indiv
             "megami tensei": "Megami Tensei, also known as 'Megaten' for short, is a franchise owned by ATLUS consisting largely of videogames. \nStarting as a videogame adaptation of the book 'Digital Devil Story: Megami Tensei' by novelist Nishitani Aya, It grew into a large franchise encompassing games such as the Shin Megami Tensei and the Persona series.",
             "glossary": "A handy guidebook which contains an expansive list on nearly every piece of RPG or SMT terminology this game uses, as well as what it means. \nIf you don't know what something means or does, simply type it's name in to consult the glossary",
             }
+
+def lookup(word):
+    word = word.lower()
+    if word in glossary:
+        print(glossary[word])
+        while word in glossary:
+            word = input("\npress enter to continue or type another word for an explanation\n").lower()
+            if word in glossary:
+                print(glossary[word])
+    else:
+        print("[INVALID INPUT]")
+        time.sleep(1)

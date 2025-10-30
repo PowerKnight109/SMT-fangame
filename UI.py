@@ -1,5 +1,5 @@
 from Skills import effects
-from CharacterSheets import daemon, pixie, player, pixie1
+#from CharacterSheets import daemon, pixie, player, pixie1
 import math
 #45
 def vision(spriteselect):
