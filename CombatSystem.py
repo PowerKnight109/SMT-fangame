@@ -232,6 +232,7 @@ def fight(party, enemy):
             aim = input().upper()
             if len(aim) != 1:
                 lookup(aim)
+                continue
             elif ord(aim) - 65 >= len(enemy):
                 print("That is not a valid target!")
                 time.sleep(1)
@@ -323,6 +324,7 @@ def fight(party, enemy):
 
         elif partymenu != "d":
             lookup(partymenu)
+            continue
 
 
 
