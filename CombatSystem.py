@@ -47,9 +47,10 @@ def fight(party, enemy):
             while len(enemy) > 0 and len(party) > 0 and (pt > 0 or hpt > 0):
                 if baton >= len(party):
                     baton = 0
-                print("\nTurns:", pt, "        Half Turns:", hpt)
+                party[baton].guard = False
                 namedisplay([party[baton]], True)
-                unitmenu = input( "A) Attack\nB) Skill\nC) Item\nD) Guard\nE) Pass\n").lower()
+                print("Turns:", pt, "                         Half Turns:", hpt)
+                unitmenu = input("\nA) Attack\nB) Skill\nC) Item\nD) Guard\nE) Pass\n").lower()
                 if unitmenu == "a":
                     if len(enemy) == 1:
                         aim = "A"
@@ -205,6 +206,15 @@ def fight(party, enemy):
                             else:
                                 pt -= 1
 
+                elif unitmenu == "d":
+                    print(party[baton].name, "took up a defensive stance!")
+                    time.sleep(1)
+                    party[baton].guard = True
+                    if hpt > 0:
+                        hpt -= 1
+                    else:
+                        pt -= 1
+
                 elif unitmenu == "e":
                     if pt > 0:
                         pt -= 1
@@ -241,6 +251,8 @@ def fight(party, enemy):
                 print("This enemy does not yet have dialogue")
                 time.sleep(1)
                 continue
+            print("You struck up a conversation with the", enemy[ord(aim)-65].name)
+            time.sleep(1)
             result = enemy[ord(aim)-65].lines.opening[random.randint(0, len(enemy[ord(aim)-65].lines.opening)-1)]()
             if result == "aggro":
                 print("The", enemy[ord(aim) - 65].name, "became aggravated!")
@@ -278,9 +290,7 @@ def fight(party, enemy):
                 lookup(choose)
             elif ord(choose) - 65 < len(combatants):
                 observee = combatants[len(combatants)-(ord(choose)-64)]
-                print(observee.image, "\n"+observee.name, "(lv" + str(observee.lv) + ")\n" + "species:", observee.race, "\nHP:",
-                      str(observee.hp) + "/" + str(observee.mxhp) + "\nMP:",
-                      str(observee.mp) + "/" + str(observee.mxmp), "\n\nskill affinities:")
+                print(observee.image, "\n"+observee.name, "(lv" + str(observee.lv) + ")\n" + "species:", observee.race, "\nHP:", str(observee.hp) + "/" + str(observee.mxhp) + "\nMP:", str(observee.mp) + "/" + str(observee.mxmp), "\n\nskill affinities:")
                 for i in range(11):
                     print(list(observee.element)[i] + ":", observee.element[list(observee.element)[i]]["aff"])
                 print("\nweaknesses and resistances:")

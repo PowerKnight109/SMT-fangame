@@ -64,7 +64,25 @@ player = chara("You", "Human", 5, 58, 58, 73, 73, 0, 6, 6, 6, 6, 7, 0, 0, 0, {
        "Confusion": {"res": 0, "dur": 0, "inflict": 0},
        "Charm": {"res": 0, "dur": 0, "inflict": 0},
        "Seal": {"res": 0, "dur": 0, "inflict": 0},
-        }, [agi, zio], [hama, gram_slice, dia, makajama], 100, {"taru": {"stage": 0, "dur":0}, "raku": {"stage": 0, "dur":0}, "suku": {"stage": 0, "dur":0}}, False, "", "                       #+-+#            \n                     #####+++           \n                    ######++#           \n                      ##+..##           \n                    ####+-++            \n                     ##++-++++++        \n                    ###.--#+#+-++       \n                    #+-.-+####+#++      \n                   ##++--#### ####++    \n              ##+++##+--.+###   +++#    \n           #######+##-----####+####     \n          #+# ######--...-+#+###        \n                 ##--++++++#+##+#       \n                ++#+#++#+-+-++###       \n              ++#########..##++##       \n               +##########.-# ##        \n              ++#+#+##########          \n            +++ +# -#### ##+++          \n           --      +####  #+++#         \n         +--       +###    #+++#        \n       --+         ####     #++#        \n      .-           +###     ##+##       \n    ..+            +###      #####      \n   .+              +###       +####     \n ++                 ###        #####    \n+#                  ###         ####    \n                   ####          ####   \n                   ####           #+#   \n                   ####           ##++  \n                   ####            ##++ \n                  ####+             ### \n                #####               ##+#\n                                     ##+\n")
+        }, [agi, zio], [hama, gram_slice, dia, makajama], 100, {"taru": {"stage": 0, "dur":0}, "raku": {"stage": 0, "dur":0}, "suku": {"stage": 0, "dur":0}}, False, "", oak[0].image)
+
+Rei = chara("Rei", "Human", 10, 58, 58, 73, 73, 999, 10, 10, 10, 10, 10, 70, 0, 10, {"Physical":{"aff": 0, "res":0},
+       "Fire":{"aff": 0, "res":0},
+       "Ice":{"aff":0, "res": 0},
+       "Lightning":{"aff":0, "res":0},
+       "Force": {"aff": 0, "res": 0},
+       "Light": {"aff":0, "res": 0},
+       "Dark": {"aff": 0, "res": 0},
+       "Almighty": {"aff": 0, "res": 0},
+       "Support": {"aff": 0},
+       "Heal": {"aff": 0},
+       "Ailment": {"aff": 0},
+       "Sleep": {"res": 0, "dur": 0, "inflict": 0},
+       "Mirage": {"res": 0, "dur": 0, "inflict": 0},
+       "Poison": {"res": 0, "dur": 0, "inflict": 0},
+       "Confusion": {"res": 0, "dur": 0, "inflict": 0},
+       "Charm": {"res": 0, "dur": 0, "inflict": 0},
+       "Seal": {"res": 0, "dur": 0, "inflict": 0}}, [hama], [], 999, {"taru": {"stage": 0, "dur":0}, "raku": {"stage": 0, "dur":0}, "suku": {"stage": 0, "dur":0}}, False, "",  oak[1].image)
 
 daemon = chara("Daemon", "Brute", 7, 78, 78, 73, 73, 0, 11, 9, 9, 8, 7, -10, -20, 0, {
        "Physical":{"aff": 2, "res":0},

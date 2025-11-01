@@ -59,6 +59,8 @@ def namedisplay(subject, allied):
             token = ["(SLP)", "(MIRA)", "(PSN)", "(CONF)", "(CHRM)", "(SL)"]
             if subject[i].element[effects[j+3]]["dur"] != 0:
                 label += token[j]
+        if subject[i].guard:
+            label += "(DEF)"
 
         if not allied:
             label = subject[i].name + label + ":"
