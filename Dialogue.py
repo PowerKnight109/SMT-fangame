@@ -30,7 +30,7 @@ class bargaintxt:
 
 pixied = bargaintxt("let's see here", "I'll take", ["a small portion of your", "a moderate amount of your", "a large portion of your", "one"], ["HP", "MP", "Macca", "Life Stone", "Chakra Drop", "Amrita Soda", "Revival Bead"], "Oh wow, thanks!", "Wait, you seriously don't have any?", 'Well that just won'+"'"+'t do!"\n"Here take one of mine, It'+"'"+'s not safe to be wondering out here without any', "God, you don't have anything do you?", "Don't you think you can cheap out on me!", "Yeah, you're probably right", "Alright, I think I'm satisfied for now", "Thanks for the gifts, idiot!", "Is this enough?", "You've taken everything I have!", 'No way in hell!', "I-i-i can be helpful! Just please don't kill me!", "OW! Why did you do that?")
 monsterd = bargaintxt("LeMmE tHiNk", "GiMmE", ["A sMaLl bIt oF YoUr", "A nIcE cHuNk oF yOuR", "A mAsSiVe ChUnK oF yOuR", "A"], ['HP', 'MP', 'MaCcA', 'LiFe StOnE', 'ChAkRa DrOp', 'SoDa', 'ReViVal BeAd'], "AlRigHT!", "YoURe fLaT OUT?", "In tHaT caSe, TaKe thIs", "QuIT wASTinG mY TIMe!", "YoU PrIcK!", "AlRigHt, yOU gOT mE", "i'VE hAd my fiLL", "Get SCAmmEd, IdIoT!", "AlrIgHT, AlRiGHt, HeRE", "I'm fLAt bROke!", "ThAt's IT!", "AlRigHT, fIne", "Hey WaIt, Why'Re yOU hiTTinG ME!?")
-toughd = bargaintxt("Let's see here", "Fork over", ["A small bit of your", "a nice piece of your", "A bunch of your", "one"], ["HP", "MP", 'MaCcA', "Life Stone", "Chakra Drop", "Amrita Soda", "Revival Bead"], "That's the stuff!", "You don't have ANY?", "Take one of mine then!", "Alright, I've had it with you!", "Stingy people like you PISS ME OFF!", "Fair enough", "I think that's enough", "Man, you're so gullible!", "Alright fine, take it", "You've bled me dry!", "I'll make you pay for trying that!", "Better than dying, I guess", "OW! The fuck's wrong with you!?")
+toughd = bargaintxt("Let's see here", "Fork over", ["A small bit of your", "a nice piece of your", "A bunch of your", "one"], ["HP", "MP", 'MaCcA', "Life Stone", "Chakra Drop", "Amrita Soda", "Revival Bead"], "That's the stuff!", "You don't have ANY?", "Take one of mine then!", "Alright, I've had it with you!", "Stingy people like you PISS ME OFF!", "Fair enough", "I think that's enough", "Man, you're so gullible!", "Here, you can have this--just spare me!", "You've bled me dry!", "I'll make you pay for trying that!", "Better than dying, I guess", "OW! The fuck's wrong with you!?")
 
 def pixiec1(demon):
     print(pixie.image+"\nPIXIE:\n'WOW, A human!'\n'I've never seen a real life human before! Do you mind if I get a closer look?'")
@@ -456,6 +456,225 @@ def toughfight(demon):
     lookup(challenge)
     return toughfight(demon)
 
+def toughmurder(demon):
+    name = demon.image + "\n" + demon.name.upper() + ":\n"
+    print(name+"'You lookin' at me, buddy? You want some of this?'\n'I'll stone cold murder you.'\n")
+    look = input("A) Glare at them\nB) Ignore them\nC) Walk closer\n").lower()
+    if look == "a":
+        print(name+"'What, you think you're hot stuff?'\n'With a gross-ass face like that?'\n")
+        hot = input("A) It's just how I look.\nB) Still better than you.\nC) I'm kind of a stud.\n").lower()
+        if hot == "a":
+            print(name+"'You don't get a face like that without havin' survived a lot of bad shit...'\n'Well, if we can figure somethin' out here, maybe I can give you a hand.'\n")
+            return toughr(demon)
+        elif hot == "b":
+            print(name+"'Dammit,no one asked you!'")
+            if random.randint(0, 100) <= 25:
+                return "flee"
+            else:
+                return "aggro"
+        elif hot == "c":
+            print(name+"'Doesn't matter if you're a prettyboy on the outside. You're still gross on the inside!'")
+            return "none"
+    elif look == "b":
+        print(name+"'What, you scared?'\n'C'mon then, beg for your life.'\n")
+        beg = input("A) Please spare me.\nB) Spare me or I'll kill you.\nC) Help... save... me...\n")
+        if beg == "a":
+            print(name+"'Wow, you actually frickin' did it!'\n'And while you're at it, let's see what's in your pockets, too.'")
+            return toughr(demon)
+        elif beg == "b":
+            print(name+"'W-Wait! Please don't kill me!'")
+            return threat(25, 5, demon, toughd)
+        elif beg == "c":
+            print("'Huh? Shit, did I really get you that bad?'\n'If you die, it's... it's gonna be my fault...'\n'I gotta scram before the authorities get here!")
+            return "flee"
+    elif look == "c":
+        print(name+"'Hey, keep your distance. I'm serious.'")
+        dis = input("A) Go closer\nB) Step back\nC) Fold your arms\n")
+        if dis == "a":
+            print(name+"'Tch, you must really want some of this, huh?'")
+            x = random.randint(0, 100)
+            if x <= 50:
+                return "aggro"
+            else:
+                gift = items[random.randint(0, len(items) - 1)]
+                if x <= 75:
+                    print("The demon shows you a", gift.name, "clutched in his hand")
+                    time.sleep(1.5)
+                    y = bargaining(gift.name, 1, 80, random.randint(1, 3), toughd, demon)
+                    if y == "pass":
+                        print("You recieved a", gift.name, "from the", demon.name)
+                        return "none"
+                    else:
+                        return y
+        elif dis == "b":
+            print(name+"'God, what a wimp!'\n'A demon's gotta know when he can't back down!'")
+            return "none"
+
+        elif dis == "c":
+            print(name+"'What, you're not gonna move until I join you?'\n'Fine, fine, let's talk this shit out...'")
+            return toughr(demon)
+    lookup(look)
+    toughmurder(demon)
+
+def toughr(demon):
+    name = demon.image+"\n"+demon.name+"\n"
+    print("'So... what the hell do you want?'\n")
+    ask = input("A) Join me\nB) Give me items\nC) Give me Macca\nD) Let's gamble\n").lower()
+    if ask == "a":
+        print(name+"'Join you eh?\nSure, I might consider it- depending on what you give me.'")
+        x = bargaining("soldier", 3, 40, 3, toughd, demon)
+        if x == "pass":
+            return "recruit"
+        else:
+            return x
+    elif ask == "b":
+        print(name+"'Lemme see what I've got...'")
+        gift = items[random.randint(0, len(items)-1)]
+        print("'Well, I do have this", gift.name, "I could give you.\nBut I'm not running a charity here.'")
+        x = bargaining(gift.name, 2, 50, random.randint(0, 2), toughd, demon)
+        if x == "pass":
+            print("The demon gave you 1", gift.name+"!")
+            gift.cost += 1
+            return "none"
+        else:
+            return x
+    elif ask == "c":
+        print(name+"'What are you planning on spending it on anyway?'\n")
+        spend = input("A) Food\nB) Demons\nC) Digital Cryptocurrency\nD) Gambling\nE) Drugs\n").lower()
+        if spend == "a":
+            print(name+"'Aw man... I'm touched'\n'Here, I won't even ask for anything in return'\nThe demon gave you 50 Macca!")
+            player.macca += 50
+        elif spend == "b":
+            print(name+"'Trading with other demons eh? Well, let's put those trading skills to the test!'")
+            x = bargaining("Macca", 3, 50, random.randint(0, 2), toughd, demon)
+            if x == "pass":
+                cash = random.randint(1, 2)*100
+                print("The demon gave you", cash, "Macca!")
+                player.macca += cash
+                return "none"
+            else:
+                return x
+        elif spend == "c":
+            print(name+"'A what now? You're speaking complete nonsense.'\n'Well anyway, whatever you do with it doesn't matter, so long as I receive proper compensation.'")
+            x = bargaining("Macca", 2, 70, random.randint(0, 3), toughd, demon)
+            if x == "pass":
+                cash = random.randint(1, 5) * 50
+                print("The demon gave you", cash, "Macca!")
+                player.macca += cash
+                return "none"
+            else:
+                return x
+
+        elif spend == "d" and random.randint(0, 100) <= 75:
+            print(name+"Now that's what I'm talking about! You're a demon after my own heart!'")
+            x = bargaining("Macca", 3, 20, random.randint(0, 1), toughd, demon)
+            if x == "pass":
+                cash = random.randint(1, 30) * 10
+                print("The demon gave you", cash, "Macca!")
+                player.macca += cash
+                return "none"
+            else:
+                return x
+        elif spend == "e" or spend == "d":
+            print(name+"'Forget it!'\n'I ain't giving my money to no damn addict!'")
+            return "aggro"
+    elif ask == "d":
+        print(name+"'Now we're talking!'\n'So... what's our ante gonna be?'")
+        bet = input("A) Macca\nB) Items\nC) Life\n").lower()
+        if bet == "a":
+            try:
+                stake = int(input("You have "+str(player.macca)+"Macca\nHow much will you bet?\n"))
+                if stake > player.macca:
+                    print("You don't have that much!")
+                    return toughr(demon)
+            except ValueError:
+                print("[INVALID INPUT]\nPlease enter a number")
+                time.sleep(1)
+                return toughr(demon)
+        elif bet == "b":
+            backer = 0
+            for i in range(len(items)):
+                if items[i].cost > 0:
+                    print(chr(i + 65 - backer) + ")", items[i].name + ":", items[i].cost)
+                else:
+                    backer += 1
+            if backer == len(items):
+                print("You have no items")
+                time.sleep(1)
+                return toughr(demon)
+            chip = input("Which item will you wager?\n").upper()
+            if len(chip) != 1:
+                lookup(chip)
+                return toughr(demon)
+            elif ord(chip) - 65 < len(items):
+                useitem = items[ord(chip) - 65 + backer]
+                if useitem.cost <= 0:
+                    print("You don't have that item!")
+                    time.sleep(1)
+                    return toughr(demon)
+                else:
+                    try:
+                        stake = int(input("How many will you bet?\n"))
+                        if stake > useitem.cost:
+                            print("You don't have that many!")
+                            return toughr(demon)
+                    except ValueError:
+                        print("[INVALID INPUT]\nPlease enter a number")
+                        time.sleep(1)
+                        return toughr(demon)
+
+                    pool = items[random.randint(0, len(items)-1)]
+                    print(name+"'Alright! I'll bet", stake, pool+"s'")
+
+        elif bet == "c":
+            print(name+"'Like playing it dangerous eh? Well I could say the same thing for myself.'")
+
+        print("You gambled with the", demon.name+"...")
+        time.sleep(1.5)
+        if random.randint(0, demon.luck+player.luck) < player.luck:
+            print("...And won!")
+            win = True
+        else:
+            print("...And lost!")
+            win = False
+        if win:
+            print("'Damn it!'\n'Well a deal's a deal I suppose")
+            if bet == "A":
+                print("The demon reluctantly handed over", stake, "Macca")
+                player.macca += stake
+            elif bet == "b":
+                print("The demon reluctantly handed over", stake, pool.name+"s")
+                pool.cost += stake
+            elif bet == "c":
+                return "recruit"
+            if random.randint(0, 50) <= 0:
+                print("'We should do that again sometime'")
+                return "none"
+            else:
+                print("'Welp, I've been completely cleaned out. See ya next time.'")
+                return "flee"
+        else:
+            print("'Alright! Now that's the kind of LUCK I'm talking about!'")
+            if bet == "c":
+                print("'Now, I seem to remember you betting away your life'")
+                time.sleep(1)
+                print("'So PAY UP!'")
+                return "aggro"
+            else:
+                print("'Now cough up the prize!'")
+                if bet == "a":
+                    print("You lost", stake, "Macca")
+                    player.macca -= stake
+                elif bet == "b":
+                    print("You lost", stake, useitem.name+"s" )
+                    items[ord(chip) - 65].cost += stake
+                print("'I'm quitting while I'm ahead. See Ya!'")
+                return "flee"
+
+
+    lookup(ask)
+    return toughr(demon)
+
 
 def threat(defend, max, victim, text):
     count = 0
@@ -633,7 +852,7 @@ class script:
 
 pixiescript = script([pixiec1, pixiec2], "'I'm Pixie of the Fairy race'\n'I'll do my best to support you!'", "'Oh?'\n'I see you have my friend with you.'\n'In that case, here's a little gift so you take good care of her.'", "'Take this!'", "'Just try and catch me!'", "'Crap, this is bad!'", finalcute)
 slimescript = script([slimec1, monsterc2], "'I'm SlIMe oF tHE fOUl rAce'\n'I'Ll inFEct AlL yOUr fOeS!'", "'HeY! ThAt's my pAl yOu gOt tHeRe.'\n'WeLl aNY fRiEnD oF HiS IS a FrIENd oF mINE!'", "'eAt tHiS!'", "'LEt's pOWer uP!'", "", finalmonster)
-pretascript = script([pretac1, toughbeckon], "'I'm Preta of the Haunt race'\n'I'm craving for some action!'", "'Oh hey, I see you've got one of my mates with you.'\n'Well then, here's something for the road!'", "'Lemme bite ya!'", "", "", finaltough)
+pretascript = script([pretac1, toughbeckon, toughmurder], "'I'm Preta of the Haunt race'\n'I'm craving for some action!'", "'Oh hey, I see you've got one of my mates with you.'\n'Well then, here's something for the road!'", "'Lemme bite ya!'", "", "", finaltough)
 daemonscript = script([monsterc2], "'I'm Daemon of the Brute race'\n'Let's cause some chaos!'", "", "'I'Ll tEAr yOU to sHReDS!'", "'LEtS kICk tHiNgs Up a nOTcH!'", "", finalmonster)
 # if run == "none":
 #     print("No turn passes")

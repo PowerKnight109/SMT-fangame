@@ -192,10 +192,9 @@ print(player.hp)
 print(dic["HP"])#
 print("\nA)...\nB)...\nC)...\n")
 
-print(daemon.image)
-print("DAEMON:\n'blahblahblablabla'\n\n\n\n\n\n\n\n")
-
-print(daemon.image)
-print("\nDAEMON:\nblahblabalbal")
+try:
+    pound = int(input("Enter the weight in pounds: "))
+except ValueError:
+    print('Invalid input.')
 
 time.sleep(60)

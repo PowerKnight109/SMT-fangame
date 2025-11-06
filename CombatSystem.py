@@ -50,7 +50,6 @@ def fight(party, enemy):
         combatants = party + enemy
         namedisplay(enemy, False)
         partymenu = input("A) Fight\nB) Talk\nC) Status\nD) Skip\nE) Flee\n").lower()
-
         if partymenu == "a":
             baton = 0
             while len(enemy) > 0 and len(party) > 0 and (pt > 0 or hpt > 0):
