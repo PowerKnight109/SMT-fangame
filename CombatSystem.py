@@ -309,6 +309,7 @@ def fight(party, enemy):
                 items[gift].cost += 1
                 print("The demon left")
                 enemy.remove(enemy[ord(aim) - 65])
+                time.sleep(1)
                 if len(enemy) > 0:
                     continue
             else:

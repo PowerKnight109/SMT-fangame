@@ -461,7 +461,10 @@ def threat(defend, max, victim, text):
     count = 0
     name = victim.name + "\n"+victim.name.upper()+":\n"
     while True:
-        x = input("A) Extort\nB) Recruit\nC) Spare\nD) Attack\n").lower()
+        print("A) Extort\nB) Attack\nC) Spare\nD) Recruit\n")
+        if "(1)" not in victim.name:
+            print("D) Recruit")
+        x = input().lower()
         if x == "a":
             if count == 3:
                 print(name+"'"+text.broke+"'")
@@ -477,7 +480,7 @@ def threat(defend, max, victim, text):
                 count += 1
                 time.sleep(1)
                 continue
-        elif x == "b":
+        elif x == "d" and ("(1)" not in victim.name):
              if random.randint(0, 100)+victim.coward > defend + victim.loyal:
                  print(name+"'"+text.captured+"'")
                  return "recruit"
@@ -486,7 +489,7 @@ def threat(defend, max, victim, text):
                 return "aggro"
         elif x == "c":
             return "flee"
-        elif x == "d":
+        elif x == "b":
             print("You seize the opportunity to strike the defenceless demon, showing no mercy!")
             time.sleep(1)
             betrayal = dmgformula(player, victim, "Almighty", 100, -999)[0]
@@ -629,7 +632,7 @@ class script:
         self.final = final
 
 pixiescript = script([pixiec1, pixiec2], "'I'm Pixie of the Fairy race'\n'I'll do my best to support you!'", "'Oh?'\n'I see you have my friend with you.'\n'In that case, here's a little gift so you take good care of her.'", "'Take this!'", "'Just try and catch me!'", "'Crap, this is bad!'", finalcute)
-slimescript = script([slimec1, monsterc2], "'I'm SlIMe oF tHE fOUl rAce'\n'I'Ll inFEct AlL yOUr fOeS!'", "(ignore the fact he's talking normally)\n'HeY! ThAt's my pAl yOu gOt tHeRe.'\n'WeLl aNY fRiEnD oF HiS IS a FrIENd oF mINE!'", "'eAt tHiS!'", "'LEt's pOWer uP!'", "", finalmonster)
+slimescript = script([slimec1, monsterc2], "'I'm SlIMe oF tHE fOUl rAce'\n'I'Ll inFEct AlL yOUr fOeS!'", "'HeY! ThAt's my pAl yOu gOt tHeRe.'\n'WeLl aNY fRiEnD oF HiS IS a FrIENd oF mINE!'", "'eAt tHiS!'", "'LEt's pOWer uP!'", "", finalmonster)
 pretascript = script([pretac1, toughbeckon], "'I'm Preta of the Haunt race'\n'I'm craving for some action!'", "'Oh hey, I see you've got one of my mates with you.'\n'Well then, here's something for the road!'", "'Lemme bite ya!'", "", "", finaltough)
 daemonscript = script([monsterc2], "'I'm Daemon of the Brute race'\n'Let's cause some chaos!'", "", "'I'Ll tEAr yOU to sHReDS!'", "'LEtS kICk tHiNgs Up a nOTcH!'", "", finalmonster)
 # if run == "none":
