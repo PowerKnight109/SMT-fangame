@@ -459,7 +459,7 @@ def toughfight(demon):
 
 def threat(defend, max, victim, text):
     count = 0
-    name = demon.name + "\n"+victim.name.upper()+":\n"
+    name = victim.name + "\n"+victim.name.upper()+":\n"
     while True:
         x = input("A) Extort\nB) Recruit\nC) Spare\nD) Attack\n").lower()
         if x == "a":
@@ -594,14 +594,18 @@ def bargaining(item, patience, morality, target, dialogue, demon):
 
 def finalcute(demon):
     if random.randint(0, 100) < 50:
+        print(demon.image + "\n" + demon.name.upper() + ":")
         print("'Crap!'\n'I'm getting out of here!'")
         return "flee"
     print(demon.name, "struck up a conversation with", player.name)
+    time.sleep(1)
+    print(demon.image + "\n" + demon.name.upper() + ":")
     print("'H-hang on a minute! Surely you don't have to kill me!'\n'I-i was just playing a little prank!'\n'We're all fine now, right?'")
-    return threat(10, 5, demon, demon.lines.opening)
+    return threat(10, 5, demon, pixied)
 
 
 def finalmonster(demon):
+    print(demon.image + "\n" + demon.name.upper() + ":")
     if demon.coward > 0 and random.randint(0, 100) <= demon.coward:
         print("'HelL nO!'\n' I'm nOt sTiCKinG aROunD aND geTtIng kiLleD!'")
         return "flee"
@@ -610,6 +614,7 @@ def finalmonster(demon):
         return "aggro"
 
 def finaltough(demon):
+    print(demon.image + "\n" + demon.name.upper() + ":")
     print("'So that's it huh...'\n'Well I'm not going down without a fight!'")
     return "aggro"
 
@@ -623,7 +628,7 @@ class script:
         self.heal = heal
         self.final = final
 
-pixiescript = script([pixiec1, pixiec2], "'I'm Pixie of the Fairy race'\n'I'll do my best to support you!'", "'Oh?'\n'I see you have my friend with you.'\n'In that case, here's a little gift so you take good care of her.'", "'Take this!'", "'Just try and catch me!'", 'Crap, this is bad!', finalcute)
+pixiescript = script([pixiec1, pixiec2], "'I'm Pixie of the Fairy race'\n'I'll do my best to support you!'", "'Oh?'\n'I see you have my friend with you.'\n'In that case, here's a little gift so you take good care of her.'", "'Take this!'", "'Just try and catch me!'", "'Crap, this is bad!'", finalcute)
 slimescript = script([slimec1, monsterc2], "'I'm SlIMe oF tHE fOUl rAce'\n'I'Ll inFEct AlL yOUr fOeS!'", "(ignore the fact he's talking normally)\n'HeY! ThAt's my pAl yOu gOt tHeRe.'\n'WeLl aNY fRiEnD oF HiS IS a FrIENd oF mINE!'", "'eAt tHiS!'", "'LEt's pOWer uP!'", "", finalmonster)
 pretascript = script([pretac1, toughbeckon], "'I'm Preta of the Haunt race'\n'I'm craving for some action!'", "'Oh hey, I see you've got one of my mates with you.'\n'Well then, here's something for the road!'", "'Lemme bite ya!'", "", "", finaltough)
 daemonscript = script([monsterc2], "'I'm Daemon of the Brute race'\n'Let's cause some chaos!'", "", "'I'Ll tEAr yOU to sHReDS!'", "'LEtS kICk tHiNgs Up a nOTcH!'", "", finalmonster)

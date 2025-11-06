@@ -243,7 +243,6 @@ def fight(party, enemy):
                         pgraveyard.remove(pgraveyard[i])
 
                 if len(enemy) == 1 and len(egraveyard) > old:
-                    print("\n"+enemy[0].name.upper()+":")
                     react = enemy[0].lines.final(enemy[0])
                     if react == "aggro":
                         print(enemy[0].name, "is making a last stand!")
