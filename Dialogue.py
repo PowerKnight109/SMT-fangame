@@ -33,20 +33,20 @@ monsterd = bargaintxt("LeMmE tHiNk", "GiMmE", ["A sMaLl bIt oF YoUr", "A nIcE cH
 toughd = bargaintxt("Let's see here", "Fork over", ["A small bit of your", "a nice piece of your", "A bunch of your", "one"], ["HP", "MP", 'MaCcA', "Life Stone", "Chakra Drop", "Amrita Soda", "Revival Bead"], "That's the stuff!", "You don't have ANY?", "Take one of mine then!", "Alright, I've had it with you!", "Stingy people like you PISS ME OFF!", "Fair enough", "I think that's enough", "Man, you're so gullible!", "Alright fine, take it", "You've bled me dry!", "I'll make you pay for trying that!", "Better than dying, I guess", "OW! The fuck's wrong with you!?")
 
 def pixiec1(demon):
-    print(pixie.image+"\n\nPIXIE:\n'WOW, A human!'\n'I've never seen a real life human before! Do you mind if I get a closer look?'")
+    print(pixie.image+"\nPIXIE:\n'WOW, A human!'\n'I've never seen a real life human before! Do you mind if I get a closer look?'")
     x = input("\nA) Of course\nB) Not sure I'm comfortable with that,\n").lower()
     if x == "a":
         y = random.randint(0, 100)
         if y <= 10:
-            print("\nPIXIE:\n'Wow, humans are amazing! I think I'm going to join you from now on'")
+            print(pixie.image+"\nPIXIE:\n'Wow, humans are amazing! I think I'm going to join you from now on'")
             return "recruit"
         elif y <= 20:
-            print("\nPIXIE:\n'Ha! You're too gullible!'")
+            print(pixie.image+"\nPIXIE:\n'Ha! You're too gullible!'")
             return "aggro"
         elif y <= 40:
             if y <= 30 and player.macca >= 0:
-                print("\nPIXIE:\n'Tricked you!'")
-                loss = random.randint(1, 30)
+                print(pixie.image+"\nPIXIE:\n'Tricked you!'")
+                loss = random.randint(1, 3)*10
                 if loss > player.macca:
                     loss = player.macca
                 print("The pixie frisked you and stole", loss, "Macca!")
@@ -57,9 +57,9 @@ def pixiec1(demon):
                     if items[i].cost > 0:
                         stealables.append(items[i])
                 if len(stealables) == 0:
-                    print("\nPIXIE:\n'What? You don't have anything on you?'\n'How rude!'\n'Next time you try talking to a girl like me, make sure you're worth my time!'")
+                    print(pixie.image+"\nPIXIE:\n'What? You don't have anything on you?'\n'How rude!'\n'Next time you try talking to a girl like me, make sure you're worth my time!'")
                 else:
-                    print("\nPIXIE:\n'Too easy!'")
+                    print(pixie.image+"\nPIXIE:\n'Too easy!'")
                     stolen = stealables[random.randint(0, len(stealables)-1)]
                     print("The pixie stole 1", stolen.name, "from you!")
                     stolen.cost -= 1
@@ -68,32 +68,31 @@ def pixiec1(demon):
             else:
                 return "none"
         else:
-            print("\nPIXIE:\n'Thanks so much! All my friends are going to be SO jealous when I tell them I met a human in person!'")
+            print(pixie.image+"\nPIXIE:\n'Thanks so much! All my friends are going to be SO jealous when I tell them I met a human in person!'")
             return pixier(demon)
 
     elif x == "b":
         if random.randint(0, 100) >= 75:
-            print("\nPIXIE:\n'Oh alright then' :(")
+            print(pixie.image+"\nPIXIE:\n'Oh alright then' :(")
             return "none"
         else:
-            print("\nPIXIE:\n'You're no fun!'")
+            print(pixie.image+"\nPIXIE:\n'You're no fun!'")
         return "aggro"
     else:
         lookup(x)
         return pixiec1(demon)
 
 def pixiec2(demon):
-    print(pixie.image + "\n\nPIXIE:\n'Whoa, you talked to me! Could you want me to join you?'\n'Okay then, let's talk!'\n'I'm  gonna ask you a question, so make sure you answer in a way that'd make me happy, okay?'")
-    time.sleep(1)
+    print(pixie.image+"PIXIE:\n'Whoa, you talked to me! Could you want me to join you?'\n'Okay then, let's talk!'\n'I'm  gonna ask you a question, so make sure you answer in a way that'd make me happy, okay?'")
     h = input("'So... do you think I'm cute?'\n\nA) You're cute\nB) Not really\nC) I'm leaving\n").lower()
     if h == "a":
-        print("\nPIXIE:\n'Ahaha! Thanks!'")
+        print(pixie.image+"\nPIXIE:\n'Ahaha! Thanks!'")
         return pixier(demon)
     elif h == "b":
-        print("\nPIXIE:\n'How rude!'")
+        print(pixie.image+"\nPIXIE:\n'How rude!'")
         return "aggro"
     else:
-        print("\nPIXIE:\n'Don't you dare turn away!'")
+        print(pixie.image+"\nPIXIE:\n'Don't you dare turn away!'")
         return "aggro"
 
 def pixier(demon):
@@ -102,13 +101,13 @@ def pixier(demon):
     y = random.randint(0, 100)
     if ask == "a":
         if y <= 10:
-            print("\nPIXIE:\n'Well, good luck with that.'")
+            print(pixie.image+"\nPIXIE:\n'Well, good luck with that.'")
             return "flee"
         elif y <= 40:
-            print("\nPIXIE:\n'I know! Why don't we be friends then?'\n'Doesn't that sound like such a good idea?'")
+            print(pixie.image+"\nPIXIE:\n'I know! Why don't we be friends then?'\n'Doesn't that sound like such a good idea?'")
             return "recruit"
         else:
-            print("\nPIXIE:\n'Hey now, if you want to be friends with me you've got to give me something to prove it first.'")
+            print(pixie.image+"\nPIXIE:\n'Hey now, if you want to be friends with me you've got to give me something to prove it first.'")
             z = bargaining("friend", 5, 50,  random.randint(1, 2), pixied, pixie)
             if z == "pass":
                 return "recruit"
@@ -116,14 +115,14 @@ def pixier(demon):
                 return z
     elif ask == "b":
         if y <= 10:
-            print("\nPIXIE:\n'Yeah right! I bet you're the type who views demons as nothing more than tools!'")
+            print(pixie.image+"\nPIXIE:\n'Yeah right! I bet you're the type who views demons as nothing more than tools!'")
             print("'Well guess what? You aren't fooling me with that bullshit!'")
             return "aggro"
         elif y <= 60:
-            print("\nPIXIE:\n'Idk, see I'm not really the fighting type.'\n'You'd probably be better off bothering some other demons if that's what you want.'")
+            print(pixie.image+"\nPIXIE:\n'Idk, see I'm not really the fighting type.'\n'You'd probably be better off bothering some other demons if that's what you want.'")
             return "none"
         else:
-            print("\nPIXIE:\n'You're trying to recruit allies?'\n'Well, in that case you should probably know that most demons aren't going to join for free'\n'Most are going to want you to offer something in return. I'll lead by example'")
+            print(pixie.image+"\nPIXIE:\n'You're trying to recruit allies?'\n'Well, in that case you should probably know that most demons aren't going to join for free'\n'Most are going to want you to offer something in return. I'll lead by example'")
             z = bargaining("recruit", random.randint(1,2), 50, random.randint(1, 2), pixied, pixie)
             if z == "pass":
                 return "recruit"
@@ -131,10 +130,10 @@ def pixier(demon):
                 return z
     elif ask == "c":
         if y < 50:
-            print("\nPIXIE:\n'Die scum!'")
+            print(pixie.image+"\nPIXIE:\n'Die scum!'")
             return "aggro"
         else:
-            print("\nPIXIE:\n'Y-you aren't talking about me are you? You don't mean you want to k-k-KILL me?'")
+            print(pixie.image+"\nPIXIE:\n'Y-you aren't talking about me are you? You don't mean you want to k-k-KILL me?'")
             if random.randint(0, player.agl)+player.luck > random.randint(0, pixie.agl)+pixie.luck:
                 print("'P-please wait! You don't have to do this! I'll do anything!'\n")
                 return threat(30, 50, pixie, pixied)
@@ -143,20 +142,20 @@ def pixier(demon):
                 return "flee"
 
     elif ask == "d":
-        print("\nPIXIE:\n'Huh? You want some Macca?'")
+        print(pixie.image+"\nPIXIE:\n'Huh? You want some Macca?'")
         if random.randint(0, 100) < 50:
             print("'Alright, but first you'll have to guess which hand it's in'\n")
             input("A) Left\nB) Right\nC) Kata\n")
             if random.randint(0, 100) < 50:
-                print("\nPIXIE:\n'Nope! You lose;D'")
+                print(pixie.image+"\nPIXIE:\n'Nope! You lose;D'")
             else:
-                print("\nPIXIE:\n'Aw man, you guessed right!'\n'Guess I have to give you the money now' -_-"+'"')
+                print(pixie.image+"\nPIXIE:\n'Aw man, you guessed right!'\n'Guess I have to give you the money now' -_-"+'"')
                 winnings = random.randint(5, 20)*5
                 print("you gained", winnings, "Macca")
                 player.macca += winnings
             return "none"
         else:
-            print("\nPIXIE:\n'Sure, I guess could trade some with you'")
+            print(pixie.image+"\nPIXIE:\n'Sure, I guess could trade some with you'")
             funds = random.randint(1, 3)
             z = bargaining("Macca", 3, 60, funds, pixied, pixie)
             if z == "pass":
@@ -167,7 +166,7 @@ def pixier(demon):
                 return z
     elif ask == "e":
         product = items[random.randint(0, len(items)-1)]
-        print("\nPIXIE:\n'Hmm... Well I do have this", product.name, "I could give to you'\n'But I'm not going to just give it to you for free. I want something in return!'")
+        print(pixie.image+"\nPIXIE:\n'Hmm... Well I do have this", product.name, "I could give to you'\n'But I'm not going to just give it to you for free. I want something in return!'")
         if product.name == "revival bead":
             z = bargaining(product.name, 3, 50, random.randint(1, 2), pixied, pixie)
         else:
@@ -184,8 +183,8 @@ def pixier(demon):
 
 
 def pretac1(demon):
-    name = "\nPRETA:\n"
-    print(demon.image + "\n"+name+"'Man, I'm starving! Got anything to eat?'\n")
+    name = preta.image+"\nPRETA:\n"
+    print(name+"'Man, I'm starving! Got anything to eat?'\n")
     eat = input("A) No, sorry\nB) Me\nC) A knuckle sandwich\nD) I've got a coupon for 2 free pizzas in my pocket\n").lower()
     if eat == "a":
         print(name+"'Then how about I eat YOU instead!'")
@@ -220,8 +219,8 @@ def pretac1(demon):
     pretac1(demon)
 
 def slimec1(demon):
-    name = "\nSLIME:\n"
-    print(demon.image+"\n"+name+"'HeY, yOu lOoK toUGh! Let'S hAVe aN ARm wREstLinG MAtcH!'\n")
+    name = slime.image+"\nSLIME:\n"
+    print(name+"'HeY, yOu lOoK toUGh! Let'S hAVe aN ARm wREstLinG MAtcH!'\n")
     match = input("A) You're on!\nB) I'll pass\n").lower()
     if match == "a":
         print("\nYou had an arm wrestling match with the demon.\nDue to the Slime having no arms, you are automatically declared the winner.")
@@ -296,8 +295,8 @@ def slimec1(demon):
 #         return monsterc1(demon)
 
 def monsterc2(demon):
-    name = "\n"+demon.name.upper()+":\n"
-    print(demon.image+"\n"+name+"'EehEeHEEHEE! I SmEll blOoD! BLood!'\n")
+    name = demon.image+"\n"+demon.name.upper()+":\n"
+    print(demon.name.upper()+":\n"+"'EehEeHEEHEE! I SmEll blOoD! BLood!'\n")
     blood = input("A) Laugh with them\nB) Sniff the air\nC) Stay silent\n").lower()
     if blood == "a":
         print(name+"'EEHEe... You GET It, rIght? you LovE THE FEELInG oF GetTINg SPLaTteReD wIth blOOD, too!'")
@@ -379,7 +378,7 @@ def monsterc2(demon):
     return monsterc2(demon)
 
 def monsterr(demon):
-    name = "\n"+demon.name+"\n"
+    name = demon.image+"\n"+demon.name+"\n"
     print("'So wAdDyA wANt aNYwAY?'\n")
     want = input("A) Join me\nB) Give me advice\nC) Give me items\n").lower()
     if want == "a":
@@ -405,9 +404,62 @@ def monsterr(demon):
         return monsterr(demon)
 
 
+def toughbeckon(demon):
+    name = demon.image+"\n" + demon.name.upper() + ":\n"
+    print("The demon is beckoning you closer... What will you do?\n")
+    beckon = input("A) Venture closer\nB) Gesture back at them\nC) Put your hand out\n").lower()
+    if beckon == "a":
+        print(name+"Oh? You're approaching me?")
+    if beckon == "b":
+        print(name+"'Whoa, was that one an insult? You got balls, man.'")
+    elif beckon == "c":
+        print(name+"'Huh... Shoulda figured you wouldn't fall for my trick.'")
+    return toughfight(demon)
+
+
+def toughfight(demon):
+    name = demon.image + "\n" + demon.name.upper() + ":\n"
+    print("'Y'know, once I start fighting, I'm unstoppable...'\n'You got what it takes to shut me down?'\n")
+    challenge = input("A) I do\nB) I don't\n").lower()
+    if challenge == "a":
+        print(name+"'Alright, let's find out if that's true'\n'I challenge you to a game of arm-wrestling. Let us compare our strength like real men.'\n'Hmm... a  game like this is no fun without a wager. What should the bet be?'\n")
+        wrestle = input("A) If I win you'll join me\nB) If I win you'll give me items\nC) If I win you'll give me Macca\nD) Actually, I changed my mind\n").lower()
+        if wrestle == "d":
+            print(name+"'HA! What a wimp!'")
+            return "none"
+        else:
+            print(name+"'Alright, but if I win, I'm taking your life!'")
+            print("You challenged the", demon.name, "to a bout of arm-wrestling...")
+            time.sleep(1.5)
+            if random.randint(0, player.str + demon.str) <= player.str:
+                print("...And won!")
+                if wrestle == "a":
+                    return "recruit"
+                elif wrestle == "b":
+                    prize = items[random.randint(0, len(items)-1)]
+                    print("The", demon.name, "handed you one", items[prize].name)
+                    items[prize].cost += 1
+                    return "none"
+                elif wrestle == "c":
+                    print("The", demon.name, "handed you 100 Macca")
+                    player.macca += 100
+                    return "none"
+            else:
+                print("...And lost!")
+                print(name+"And now it's time for me to claim my prize...'")
+                return "aggro"
+
+    elif challenge == "b":
+        print("'Then quit talkin to me!'")
+        return "none"
+
+    lookup(challenge)
+    return toughfight(demon)
+
+
 def threat(defend, max, victim, text):
     count = 0
-    name = "\n"+victim.name.upper()+":\n"
+    name = demon.name + "\n"+victim.name.upper()+":\n"
     while True:
         x = input("A) Extort\nB) Recruit\nC) Spare\nD) Attack\n").lower()
         if x == "a":
@@ -423,6 +475,7 @@ def threat(defend, max, victim, text):
                 print(name+"'"+text.mugged+"'")
                 player.macca += stolen
                 count += 1
+                time.sleep(1)
                 continue
         elif x == "b":
              if random.randint(0, 100)+victim.coward > defend + victim.loyal:
@@ -448,14 +501,14 @@ def threat(defend, max, victim, text):
 def bargaining(item, patience, morality, target, dialogue, demon):
     frustration = 0
     mood = 0
-    name = "\n"+demon.name.upper()+":\n"
+    name = demon.image + "\n"+demon.name.upper()+":\n"
     offers = {"HP": player.hp, "MP": player.mp, "Macca": player.macca, "Life Stone": items[0].cost, "Chakra Drop": items[1].cost, "Amrita Soda": items[2].cost, "Revival Bead": items[3].cost,}
     while True:
         demand = random.randint(0, len(list(offers)) - 1)
         if list(offers)[demand] == item:
             continue
         else:
-            print(name+"'"+dialogue.think+"'")
+            print("'"+dialogue.think+"'")
             time.sleep(1)
             if list(offers)[demand] == "HP" or list(offers)[demand] == "MP" or list(offers)[demand] == "Macca":
                 perc = [0.25, 0.5, 0.75]
@@ -490,7 +543,7 @@ def bargaining(item, patience, morality, target, dialogue, demon):
                 items[1].cost = offers["Chakra Drop"]
                 items[2].cost = offers["Amrita Soda"]
                 items[3].cost = offers["Revival Bead"]
-                print("'"+dialogue.gifted+"'")
+                print(name+"'"+dialogue.gifted+"'")
                 mood += value
                 if mood > target:
                     if random.randint(0,100) > morality:
@@ -516,9 +569,11 @@ def bargaining(item, patience, morality, target, dialogue, demon):
                     return "flee"
                 else:
                     frustration += 1
+                    print(name)
 
             elif haggle == "b":
                 frustration += 1
+                print(name)
             elif haggle == "c":
                 if mood >= target:
                     print(name+"'"+dialogue.content+"'")
@@ -532,6 +587,8 @@ def bargaining(item, patience, morality, target, dialogue, demon):
         if frustration >= patience:
             print(name+"'"+dialogue.frust+"'")
             return "aggro"
+
+        time.sleep(1)
 
 
 
@@ -568,7 +625,7 @@ class script:
 
 pixiescript = script([pixiec1, pixiec2], "'I'm Pixie of the Fairy race'\n'I'll do my best to support you!'", "'Oh?'\n'I see you have my friend with you.'\n'In that case, here's a little gift so you take good care of her.'", "'Take this!'", "'Just try and catch me!'", 'Crap, this is bad!', finalcute)
 slimescript = script([slimec1, monsterc2], "'I'm SlIMe oF tHE fOUl rAce'\n'I'Ll inFEct AlL yOUr fOeS!'", "(ignore the fact he's talking normally)\n'HeY! ThAt's my pAl yOu gOt tHeRe.'\n'WeLl aNY fRiEnD oF HiS IS a FrIENd oF mINE!'", "'eAt tHiS!'", "'LEt's pOWer uP!'", "", finalmonster)
-pretascript = script([pretac1], "'I'm Preta of the Haunt race'\n'I'm craving for some action!'", "'Oh hey, I see you've got one of my mates with you.'\n'Well then, here's something for the road!'", "'Lemme bite ya!'", "", "", finaltough)
+pretascript = script([pretac1, toughbeckon], "'I'm Preta of the Haunt race'\n'I'm craving for some action!'", "'Oh hey, I see you've got one of my mates with you.'\n'Well then, here's something for the road!'", "'Lemme bite ya!'", "", "", finaltough)
 daemonscript = script([monsterc2], "'I'm Daemon of the Brute race'\n'Let's cause some chaos!'", "", "'I'Ll tEAr yOU to sHReDS!'", "'LEtS kICk tHiNgs Up a nOTcH!'", "", finalmonster)
 # if run == "none":
 #     print("No turn passes")

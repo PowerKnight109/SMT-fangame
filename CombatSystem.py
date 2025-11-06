@@ -299,6 +299,7 @@ def fight(party, enemy):
             print("You struck up a conversation with the", enemy[ord(aim)-65].name)
             time.sleep(1)
             if "(1)" in enemy[ord(aim)-65].name:
+                print(enemy[ord(aim)-65].image)
                 print(enemy[ord(aim)-65].name.upper()+":")
                 print(enemy[ord(aim)-65].lines.friend)
                 gift = random.randint(0, len(items)-1)
@@ -329,6 +330,7 @@ def fight(party, enemy):
                         party.append(enemy[ord(aim) - 65])
                         print(enemy[ord(aim) - 65].lines.recruited)
                         enemy[ord(aim)-65].xp = 0
+                        time.sleep(1)
 
                     enemy.remove(enemy[ord(aim) - 65])
                     if len(enemy) > 0:

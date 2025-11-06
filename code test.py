@@ -189,6 +189,13 @@ dic = {"HP": player.hp}
 print(player.hp)
 dic["HP"] += 1
 print(player.hp)
-print(dic["HP"])
+print(dic["HP"])#
+print("\nA)...\nB)...\nC)...\n")
+
+print(daemon.image)
+print("DAEMON:\n'blahblahblablabla'\n\n\n\n\n\n\n\n")
+
+print(daemon.image)
+print("\nDAEMON:\nblahblabalbal")
 
 time.sleep(60)

@@ -40,7 +40,7 @@ glossary = {"fight": "Enter the combat menu\nThis will allow you to select indiv
             "pulinpa": "The user attempts to use magic to scramble a target's mind, which has a 70% chance of inflicting the CONFUSED status on a single foe.",
             "makajama": "The user attempts cast a seal on a single target's magical abilities, which has a 65% chance of inflicting them with the SEALED status",
             "hellish slash": "The exclusive move of Daemon\nThe user makes 4 weak physical attacks to 1 foe with their pitchfork. This move has low accuracy",
-            "life stone": "A stone with magical healing properties.\nUsing this will restore 30% of one ally's HP",
+            "life stone": "A stone with magical healing properties.\nUsing this will restore 50% of one ally's HP",
             "chakra drop": "A pot brimming with magical energy\nUsing this will restore 50MP to 1 ally",
             "amrita soda": "An extremely sweet beverage which cures all status ailments on 1 ally",
             "revival bead": "A prayer bead charged with miracles. Using this will revive one ally at 50% of their HP",

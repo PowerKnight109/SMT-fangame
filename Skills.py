@@ -396,8 +396,8 @@ class clife_stone(skill):
     def __init__(self):
         super().__init__("Life Stone", "Heal", 100, 3, 1, False)
     def use(self, user, target):
-        print(target.name, "had their health restored by", str(math.floor(target.mxhp*0.3))+"!")
-        target.hp += (target.mxhp*0.3)
+        print(target.name, "had their health restored by", str(math.floor(target.mxhp*0.5))+"!")
+        target.hp += (target.mxhp*0.5)
         target.hp = math.floor(target.hp)
         if target.hp > target.mxhp:
             target.hp = target.mxhp

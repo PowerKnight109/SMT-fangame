@@ -165,7 +165,7 @@ def Descartes(enemies, party, egraves, pgraves):
 
         # for i in range(len(prioritylist)):
         #     print(prioritylist[i][2].name, prioritylist[i][1])
-        print(enemies[relay].name.upper()+":")
+        print("\n"+enemies[relay].name.upper()+":")
         if prioritylist[len(prioritylist)-1][2].element == "Heal":
             print(enemies[relay].lines.heal)
             enemies[relay].element["Heal"]["inflict"] = 2

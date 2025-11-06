@@ -20,7 +20,7 @@ def torielbattle():
     print("A demon appeared!")
     namedisplay([daemon], False)
     time.sleep(1)
-    print("REI:\n'Crap! What's a demon doing here of all places?'\n'Don't worry", player.name+", lets stay calm and try to beat it together'\n'let's see... first I think we should view the STATUS menu to see what we're dealing with'\n'This should allow us to view all the information on a single unit in battle, without using a turn'")
+    print("\nREI:\n'Crap! What's a demon doing here of all places?'\n'Don't worry", player.name+", lets stay calm and try to beat it together'\n'let's see... first I think we should view the STATUS menu to see what we're dealing with'\n'This should allow us to view all the information on a single unit in battle, without using a turn'")
     while True:
         an = input("\n\n\nC) Status\n").lower()
         if an == "c":
@@ -43,20 +43,20 @@ def torielbattle():
                         print(list(observee.element)[i] + ":", "REPEL")
             print("\nstats:\nSTR:", observee.str, "\nVIT:", observee.vit, "\nMAG:", observee.mag, "\nAGL:", observee.agl, "\nLCK:", observee.luck, "\n\nskills:\nCritical Aura\nStrike")
             while True:
-                print("\nREI:\n'You don't need to worry about what most of this means for now.'\n'The main thing to focus on is the demon's moves, as well as weaknesses and resistances'")
+                print("\nREI:\n'You don't need to worry about what most of this means for now.'\n'The main thing to focus on is the demon's skills, as well as their weaknesses and resistances'")
                 end = input("'Once you're ready, press ENTER to return to battle'\n").lower()
                 if end.lower() in glossary:
                     print(glossary[end.lower()])
                 else:
                     break
             namedisplay([daemon], False)
-            print("REI:\n'Now that we have some more information on the enemy, let's try fighting it.'\n'Let's use the FIGHT command to enter the combat menu for each party member'\n")
+            print("\nREI:\n'Now that we have some more information on the enemy, let's try fighting it.'\n'Let's use the FIGHT command to enter the unit menu'\n")
             while True:
                 fight = input("A) Fight\n\nC) Analyse\n").lower()
                 if fight == "a":
                     namedisplay([player], True)
                     print("Turns:", 2, "                         Half Turns:", 0)
-                    print("REI:\n'This is the unit menu. This determines the combat actions individual members of your party will take'\n'Your party can keep taking actions until both your turns and half-turns run out, and the current party member who you are controlling is displayed as the 'active demon''\n'Right now, it seems like you're up. Let's try taking the STRIKE action to use a basic physical attack.'\n")
+                    print("\nREI:\n'This is the unit menu. It will continuously cycle through each member of your party, allowing you to decide which combat actions each person should take.'\n'Your party will continue to take actions until both your turns AND your half-turns run out, after which the enemies' turns will be triggered.'\n'Right now, the ACTIVE DEMON is listed as", player.name.upper()+","+ "which means that you're the party member who will perform the current action.'\n'Let's try taking the STRIKE action to use a weak, but reliable physical attack.'\n")
                     while True:
                         bhit = input("A) Strike\n").lower()
                         if bhit == "a":
@@ -67,7 +67,7 @@ def torielbattle():
                             time.sleep(1)
                             namedisplay([Rei], True)
                             print("Turns:", 1, "                         Half Turns:", 0)
-                            print("REI:\n'Great job! Now if I remember correctly, we saw that demon was weak to the LIGHT element.'\n'I think a skill of mine does damage of that element, so let's try entering the SKILL menu and having me cast HAMA'")
+                            print("\nREI:\n'Great job! Now if I remember correctly, we saw that demon was weak to the LIGHT element.'\n'I think a skill of mine does damage of that element, so let's try entering the SKILL menu and having me cast HAMA'")
                             while True:
                                 sk = input("\nA) Strike\nB) Skill\n").lower()
                                 x = sk
@@ -81,7 +81,7 @@ def torielbattle():
                                         time.sleep(1)
                                         namedisplay([player], True)
                                         print("Turns:", 0, "                         Half Turns:", 1)
-                                        print("REI:\n'Awesome! Because the demon was WEAK to that attack, we got an extra half-turn for you to use!'\n'While skills can be more versatile and deal more damage than your basic strike, they also cost MP to use'\n'Fortunately, we can use Chakra Drops to restore our MP'\n'Let's use your extra turn to go to the ITEMS menu and restore my MP with a CHAKRA DROP'")
+                                        print("\nREI:\n'Awesome! Because the demon was WEAK to that attack, we got an extra half-turn for you to use!'\n'While skills can be more versatile and deal more damage than your basic strike, they also cost MP to use'\n'Fortunately, we can use Chakra Drops to restore our MP'\n'Let's use your extra turn to go to the ITEM menu and restore my MP with a CHAKRA DROP'")
                                         while True:
                                             help = input("\nA) Strike\nB) Skill\nC) Item\n").lower()
                                             if help == "c":
@@ -98,20 +98,20 @@ def torielbattle():
                                                             print("Daemon used Critical Aura\nTheir next attack is guaranteed to be CRITICAL!")
                                                             time.sleep(1)
                                                             namedisplay([daemon], False)
-                                                            print("REI:\n'Crap, that's bad! But don't worry, I have an idea.'\n'First, let's enter the combat menu again by selecting FIGHT'")
+                                                            print("\nREI:\n'Crap, that's bad! But don't worry, I have an idea.'\n'First, let's enter the combat menu again by selecting FIGHT'")
                                                             while True:
                                                                 p = input("\nA) Fight\n\nC) Status\n").lower()
                                                                 if p == "a":
                                                                     namedisplay([player], True)
                                                                     print("Turns:", 2,"                         Half Turns:", 0)
 
-                                                                    print("REI:\n'Hitting weaknesses isn't the only way to generate half-turns. They can also be generated by critical hits or taking the PASS action'\n'Selecting PASS will consume your current turn in order to create a half-turn, allowing the next person in your party to act sooner'\n'Let's try taking the PASS action to generate a half-turn and switch to me!'\n")
+                                                                    print("\nREI:\n'Hitting weaknesses isn't the only way to generate half-turns. They can also be generated by critical hits or taking the PASS action'\n'Selecting PASS will consume your current turn in order to create a half-turn, allowing the next person in your party to act sooner'\n'Let's try taking the PASS action to generate a half-turn and switch to me!'\n")
                                                                     while True:
                                                                         p1 = input("A) Strike\nB) Skill\nC) Item\n\nE) Pass\n").lower()
                                                                         if p1 == "e":
                                                                             namedisplay([Rei], True)
                                                                             print("Turns:", 1, "                         Half Turns:", 1)
-                                                                            print("REI:\n'Great job! Now, let's convert our final turn into a half-turn by having me cast HAMA again!'")
+                                                                            print("\nREI:\n'Great job! Now, let's convert our final turn into a half-turn by having me cast HAMA again!'")
                                                                             while True:
                                                                                 x = input("\nA) Strike\nB) Skill\nC) Item\n\nE) Pass\n").lower()
                                                                                 if x == "b":
@@ -124,7 +124,7 @@ def torielbattle():
                                                                                         time.sleep(1)
                                                                                         namedisplay([player], True)
                                                                                         print("Turns:", 0, "                         Half Turns:", 2)
-                                                                                        print("REI:\n'Not only would a critical hit from the enemy demon do extra damage, it'd also generate a half-turn allowing it to act again!'\n'However, we can prevent this by taking the GUARD action.'\n'Not only does guarding halve any damage received, it also prevents attacks received from being critical!'\n'Let's both GUARD against the enemy demon's attack'")
+                                                                                        print("\nREI:\n'Not only would a critical hit from the enemy demon do extra damage, it'd also generate a half-turn allowing it to act again!'\n'However, we can prevent this by taking the GUARD action.'\n'Not only does guarding halve any damage received, it also prevents attacks received from being critical!'\n'Let's both GUARD against the enemy demon's attack'")
                                                                                         while True:
                                                                                             p = input("\nA) Strike\nB) Skill\nC) Item\nD) Guard\nE) Pass\n").lower()
                                                                                             if p == "d":
@@ -146,13 +146,13 @@ def torielbattle():
                                                                                                         Rei.hp -= d[0]
                                                                                                         time.sleep(1)
                                                                                                         namedisplay([daemon], False)
-                                                                                                        print("REI:\n'Ouch that hurt... but don't worry- I'm ok'\n'Though I've realised, this demon may make a valuable ally to us if we were to befriend it'\n'Instead of fighting, why don't we issue the TALK command to our party?'\n'Though be warned- if things go sour, the demon may get a free turn on us'")
+                                                                                                        print("\nREI:\n'Ouch that hurt... but don't worry- I'm ok'\n'Though I've realised, this demon may make a valuable ally to us if we were to befriend it'\n'Instead of fighting, why don't we issue the TALK command to our party?'\n'Though be warned- if things go sour, the demon may get a free turn on us'")
                                                                                                         while True:
                                                                                                             t = input("\nA) Fight\nB) Talk\nC) Analyse\n").lower()
                                                                                                             if t == "b":
                                                                                                                 print("You struck up a conversation with the Daemon")
                                                                                                                 time.sleep(1)
-                                                                                                                print("DAEMON:\n'You WAnt tO REcruIT ME?'\n'Well surE if YOU gIVe mE SOME itEms!'")
+                                                                                                                print(daemon.image+"\nDAEMON:\n'You WAnt tO REcruIT ME?'\n'Well surE if YOU gIVe mE SOME itEms!'")
                                                                                                                 time.sleep(1)
                                                                                                                 print("'lETs See heRe...'")
                                                                                                                 time.sleep(1)
@@ -160,25 +160,24 @@ def torielbattle():
                                                                                                                 while True:
                                                                                                                     x = input("\nA) Comply\nB) Ask for something else\nC) You don't need that\n").lower()
                                                                                                                     if x == "a":
-                                                                                                                        print("DAEMON:\n'hAhA NIce!'")
+                                                                                                                        print("\nDAEMON:\n'hAhA NIce!'")
                                                                                                                         print("'GiMme anOTHer lIFe stONe!'\n")
                                                                                                                         while True:
                                                                                                                             x = input("A) Comply\nB) Ask for something else\nC) You don't need that\n").lower()
                                                                                                                             if x == "a":
-                                                                                                                                print("DAEMON:\n'Boy, you RealLy aRE a DUmbASS, AReN'T YOu?'")
+                                                                                                                                print("\nDAEMON:\n'Boy, you RealLy aRE a DUmbASS, AReN'T YOu?'")
                                                                                                                                 print("The daemon left")
                                                                                                                                 time.sleep(1)
-                                                                                                                                print("\nREI:\n'Unfortunately that is another outcome which can arise from talking with demons'\n'Some may ask for more than they actually need, so it's up to you to put your foot down when you think they've had enough'\n")
+                                                                                                                                print(Rei.image+"\nREI:\n'Unfortunately that is another outcome which can arise from talking with demons'\n'Some may ask for more than they actually need, so it's up to you to put your foot down when you think they've had enough'\n")
                                                                                                                                 time.sleep(1)
-                                                                                                                                print("'You'll be on your own from now on, but I trust you'll be able to handle yourself.'\n'Just in case you're ever stuck though, take this'\n")
+                                                                                                                                print("'You'll be on your own from now on, but I trust you'll be able to handle yourself.'\n'Just in case you're ever stuck though, take this.'\n")
                                                                                                                                 print("(Rei handed you the GLOSSARY)")
-                                                                                                                                print("'This is a glossary filled with everything I've learnt about this world.'\n'If you ever don't know what something means or what it does, type it into any menu in the game, and you're likely to receive an explanation'")
+                                                                                                                                print("'This is a glossary filled with everything I've learnt about this world.'\n'If you ever don't know what something means or what it does, type it into any menu in the game, and you're likely to receive an explanation.'")
                                                                                                                                 time.sleep(2)
                                                                                                                                 print("'Sayonara,", player.name+". May our paths cross again sometime'")
-                                                                                                                                time.sleep(1)
                                                                                                                                 print("[Rei left the party]")
-                                                                                                                                time.sleep(2)
-                                                                                                                                input("press enter to start the true game")
+                                                                                                                                time.sleep(1.5)
+                                                                                                                                input("press enter to start the true game\n")
                                                                                                                                 return
                                                                                                                             else:
                                                                                                                                 torialsearch(x,"'Let's just give him what he wants for now.'")

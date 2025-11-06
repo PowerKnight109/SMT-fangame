@@ -38,7 +38,7 @@ def intro():
     toriel = "c"
     print("THE THRONE AWAITS")
     time.sleep(2)
-    toriel = input("Would you like to play through the tutorial?\n[WARNING:] Basic reading ability is required\nA) Yes\nB) Give me the short version\nC) No\n").lower()
+    toriel = input("Would you like to play through the tutorial?\n[WARNING]: Basic reading ability is required\nA) Yes\nB) Give me the short version\nC) No\n").lower()
     if toriel == "a":
         torielbattle()
     elif toriel != "c":
