@@ -280,10 +280,13 @@ def fight(party, enemy):
 
 
         elif partymenu == "b":
-            print("Who will you talk to?")
-            for i in range(len(enemy)):
-                print(chr(i + 65) + ")", enemy[i].name)
-            aim = input().upper()
+            if len(enemy) == 1:
+                aim = "A"
+            else:
+                print("Who will you talk to?")
+                for i in range(len(enemy)):
+                    print(chr(i + 65) + ")", enemy[i].name)
+                aim = input().upper()
             if len(aim) != 1:
                 lookup(aim)
                 continue
@@ -315,7 +318,6 @@ def fight(party, enemy):
                     enemy[ord(aim)-65].coward -= 30
 
                 elif result == "none":
-                    #print("I am the nothingman")
                     if enemy[ord(aim)-65].hp <= 0:
                         print(enemy[ord(aim)-65].name, "died!")
                         egraveyard.append(enemy[ord(aim)-65])
