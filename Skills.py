@@ -169,6 +169,24 @@ class chama(skill):
                 return 1
         else:
             return 0
+
+class clife_drain(skill):
+    def __init__(self):
+        super().__init__("Life Drain", "Almighty", 120, 10, 0, False)
+    def use(self, user, target):
+        if accformula(user, target, 98):
+            damage = dmgformula(user, target,"Almighty", 120, 0)
+            print(user.name, "drained", damage[0], "points of damage from", target.name+"!")
+            target.hp -= damage[0]
+            user.hp += damage[0]
+            if user.hp > user.mxhp:
+                user.hp = user.mxhp
+            if damage[1]:
+                return 2
+            else:
+                return 1
+        else:
+            return 0
 #
 # class cmegido(skill):
 #     def __init__(self):
@@ -423,6 +441,7 @@ bufu = cbufu()
 zan = czan()
 mudo = cmudo()
 hama = chama()
+life_drain = clife_drain()
 # megido = cmegido()
 # megidola = cmegidola()
 dia = cdia()

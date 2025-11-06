@@ -1,6 +1,6 @@
 
 # input("What is your name?\n")
-from Skills import strike, lunge, bestial_bite, gram_slice, agi, zio, bufu, zan, mudo, hama, dia, patra, dormina, dustoma, marin_karin, pulinpa, makajama, tarukaja, sukukaja, rakunda, hellish_slash
+from Skills import strike, lunge, bestial_bite, gram_slice, agi, zio, bufu, zan, mudo, hama, dia, patra, dormina, poisma, dustoma, marin_karin, pulinpa, makajama, tarukaja, sukukaja, rakunda, hellish_slash, life_drain
 from Dictionary import lookup
 import time
 import random
@@ -122,9 +122,9 @@ pixie = chara("Pixie", "Fairy", 2, 55, 55, 82, 82, 0, 2, 4, 7, 8, 6, 5, 0, 30,  
        "Confusion": {"res": -0.25, "dur": 0, "inflict": 0},
        "Charm": {"res": 0.5, "dur": 0, "inflict": 0},
        "Seal": {"res": 0, "dur": 0, "inflict": 0},
-        }, [strike, zio, zan, patra, dia, sukukaja], [marin_karin, dustoma, pulinpa, dormina],0,{"taru": {"stage": 0, "dur":0}, "raku": {"stage": 0, "dur":0}, "suku": {"stage": 0, "dur":0}}, False, "", "                                        ▒\n                                     ░░░ \n        ░                          ░░░░  \n        ░░                       ░░░░░   \n         ░░                     ░░░░░░   \n          ░░  ▒               ░░░░░░░    \n           ░░ ░              ░░░░░░░     \n           ░░░░▓           ░░░░░░░░      \n           ▓░░░░         ▒░░░░░░░        \n         ▓▓▓█▓█▓█       ░░░░░░░    ░░░   \n        ▓▓███▒▒█▒     ░░░░░░░  ░░░░░░    \n        ███▒░░▒▓███ ░░░░░░░░░░░░░░░      \n         █▓▒░░░▓███░░░▒░░░░░░░░░         \n           █▒░▒░░░▒▓▒░░▒▒                \n        ▓▓▓▒▒▓▓░▒▒░▓█                    \n      ▓▓▓▓▓▓▓▓▓▓▒▒░▒█                    \n   ▓▓▓▓▓▓▓▓▓█ ▓▓▓▓▓▓▓                    \n  ▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓                    \n ▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓░░▒                    \n ▓▓█ ▓▓▓▓▓▓▓▓▓▓░▒░░░▓                    \n     ▓▓▓▓ █▒▓▒▒░░░░░                     \n    ▓▓▓▓▓   ▒▓▒▒▒▒░▒                     \n   ▓▓▓  ▓▓                               \n  ▓▓▓    ▓▓▓                             \n ▓▓▓▓    ▓▓█                             \n▓▓▓       ▓▓                             \n▓          ▓                             \n")
+        }, [strike, zan, patra, dia, sukukaja], [marin_karin, dustoma, pulinpa, dormina],0,{"taru": {"stage": 0, "dur":0}, "raku": {"stage": 0, "dur":0}, "suku": {"stage": 0, "dur":0}}, False, "", "                                        ▒\n                                     ░░░ \n        ░                          ░░░░  \n        ░░                       ░░░░░   \n         ░░                     ░░░░░░   \n          ░░  ▒               ░░░░░░░    \n           ░░ ░              ░░░░░░░     \n           ░░░░▓           ░░░░░░░░      \n           ▓░░░░         ▒░░░░░░░        \n         ▓▓▓█▓█▓█       ░░░░░░░    ░░░   \n        ▓▓███▒▒█▒     ░░░░░░░  ░░░░░░    \n        ███▒░░▒▓███ ░░░░░░░░░░░░░░░      \n         █▓▒░░░▓███░░░▒░░░░░░░░░         \n           █▒░▒░░░▒▓▒░░▒▒                \n        ▓▓▓▒▒▓▓░▒▒░▓█                    \n      ▓▓▓▓▓▓▓▓▓▓▒▒░▒█                    \n   ▓▓▓▓▓▓▓▓▓█ ▓▓▓▓▓▓▓                    \n  ▓▓▓▓▓▓▓▓▓▓▓▓  ▓▓▓▓▓                    \n ▓▓▓▓▓▓▓▓▓▓▓▓▓▓█▓▓░░▒                    \n ▓▓█ ▓▓▓▓▓▓▓▓▓▓░▒░░░▓                    \n     ▓▓▓▓ █▒▓▒▒░░░░░                     \n    ▓▓▓▓▓   ▒▓▒▒▒▒░▒                     \n   ▓▓▓  ▓▓                               \n  ▓▓▓    ▓▓▓                             \n ▓▓▓▓    ▓▓█                             \n▓▓▓       ▓▓                             \n▓          ▓                             \n")
 
-pixie1 = chara("Pixie(1)", "Fairy", 2, 55, 55, 82, 82, 0, 2, 4, 7, 8, 6, 5, 0, 30,  {
+pixie1 = chara("Pixie", "Fairy", 2, 55, 55, 82, 82, 0, 2, 4, 7, 8, 6, 5, 0, 30,  {
        "Physical":{"aff": -2, "res":0},
        "Fire":{"aff": 0, "res":-0.25},
        "Ice":{"aff":0, "res": 0},
@@ -142,7 +142,64 @@ pixie1 = chara("Pixie(1)", "Fairy", 2, 55, 55, 82, 82, 0, 2, 4, 7, 8, 6, 5, 0, 3
        "Confusion": {"res": -0.25, "dur": 0, "inflict": 0},
        "Charm": {"res": 0.5, "dur": 0, "inflict": 5},
        "Seal": {"res": 0, "dur": 0, "inflict": 0},
-        }, [strike, zio, zan, marin_karin, patra, dia, sukukaja], [],0,{"taru": {"stage": 0, "dur":0}, "raku": {"stage": 0, "dur":0}, "suku": {"stage": 0, "dur":0}}, False, "", "                        ░░░░░      ░░░  \n                      ░░░      ░░░░░░░░░\n                     ░░░░   ░░░░░░   ░░░\n                    ░░░░░ ░░░░░░░░      \n                   ░░░░░░░░░░░░░░       \n                   ░░░░░░░░░░░░░        \n                  ░░░░░░░░░░░░░         \n            ▓▓▓███░░░░░░░░░░░░░░░░      \n           ▒▒▒▓▓▓▒▓░░░░░░░░░░ ░░  ░     \n           ▒▒▓▒░▒▒▓░░░░░░░░░     ░░     \n           ██▒░░░▓▓░░░░░░░░             \n               ░░▓▓▒░░░▒ ░░             \n                 ▒▒▒▓▒░▓   ░            \n                  ▒▒▓▓▓▓▓ ░░            \n                   ▓▓▓▓▓▓▓              \n                  ▓▒▒▓▓▓▒▓▓             \n           ▒▒▒▒▒▒▒░░░░▒█▓▒▓▓            \n          ▒▓▓▓▓▓██░░░░▓▓█▓▒▓▓▓▓         \n        ▓▒▒▓█████▒░░▒▓▓▓   ▓▓▓▓         \n       ▒▒▓▓███                          \n     ▒▒▓▓▓▓▓▓▓▓                         \n   ▒▒▓▓▓    ▓▓▓▓                        \n ▒▒▓▓█       ▓▓▓▓                       \n▒▓▓█          ▒▒▓█                      \n█              ▒▓█                      \n                ▓█                      \n")
+        }, [strike, zan, marin_karin, patra, dia, sukukaja], [],0,{"taru": {"stage": 0, "dur":0}, "raku": {"stage": 0, "dur":0}, "suku": {"stage": 0, "dur":0}}, False, "", "                        ░░░░░      ░░░  \n                      ░░░      ░░░░░░░░░\n                     ░░░░   ░░░░░░   ░░░\n                    ░░░░░ ░░░░░░░░      \n                   ░░░░░░░░░░░░░░       \n                   ░░░░░░░░░░░░░        \n                  ░░░░░░░░░░░░░         \n            ▓▓▓███░░░░░░░░░░░░░░░░      \n           ▒▒▒▓▓▓▒▓░░░░░░░░░░ ░░  ░     \n           ▒▒▓▒░▒▒▓░░░░░░░░░     ░░     \n           ██▒░░░▓▓░░░░░░░░             \n               ░░▓▓▒░░░▒ ░░             \n                 ▒▒▒▓▒░▓   ░            \n                  ▒▒▓▓▓▓▓ ░░            \n                   ▓▓▓▓▓▓▓              \n                  ▓▒▒▓▓▓▒▓▓             \n           ▒▒▒▒▒▒▒░░░░▒█▓▒▓▓            \n          ▒▓▓▓▓▓██░░░░▓▓█▓▒▓▓▓▓         \n        ▓▒▒▓█████▒░░▒▓▓▓   ▓▓▓▓         \n       ▒▒▓▓███                          \n     ▒▒▓▓▓▓▓▓▓▓                         \n   ▒▒▓▓▓    ▓▓▓▓                        \n ▒▒▓▓█       ▓▓▓▓                       \n▒▓▓█          ▒▒▓█                      \n█              ▒▓█                      \n                ▓█                      \n")
+
+preta = chara("Preta", "Haunt", 3, 57, 57, 54, 54, 0, 8, 6, 6, 6, 5, -10, -5, -10, {
+       "Physical":{"aff": 1, "res":0},
+       "Fire":{"aff": 0, "res":-0.25},
+       "Ice":{"aff":1, "res": 0},
+       "Lightning":{"aff":0, "res":0},
+       "Force": {"aff": 0, "res": -0.25},
+       "Light": {"aff":-3, "res": -0.25},
+       "Dark": {"aff": 3, "res": 0.5},
+       "Almighty": {"aff": 0, "res": 0},
+       "Support": {"aff": 0},
+       "Heal": {"aff": -1},
+       "Ailment": {"aff": 0},
+       "Sleep": {"res": 0, "dur": 0, "inflict": 0},
+       "Mirage": {"res": 0, "dur": 0, "inflict": 0},
+       "Poison": {"res": 0, "dur": 0, "inflict": 0},
+       "Confusion": {"res": 0, "dur": 0, "inflict": 0},
+       "Charm": {"res": 0, "dur": 0, "inflict": 0},
+       "Seal": {"res": 0, "dur": 0, "inflict": 0}}, [bestial_bite, bufu], [life_drain, mudo], 0, {"taru": {"stage": 0, "dur":0}, "raku": {"stage": 0, "dur":0}, "suku": {"stage": 0, "dur":0}}, False, "", "           ▓▓▓▓▓▓▓▓▓▓                   \n       ▓▓▓▓▓▓▓▓▓▓▓▓▓                    \n    ▓▓▓▓▓▓▓▓▓▒▒▓▓▓▓▓▓█▓▓▓▓▓             \n   ▓▓▓▓▓▒▓▓▒▒▒▒░▒▒▓▓▓█▓▓▓▓▓▓            \n  ▒▒▓▓▓▒▒▒▒▓▒▒▒▒▒▒▓▓▓▓▓▓▓▓▓▓▓█          \n     ▒▒░░▒▒▒▓▓▒▒▒▒█▓█▓▓▓▓▓▓▓▓▓▓▓▓       \n      ▓▓▒▓▓▒▒▒▒▒▒▓▓▓█▓▒▒▒▓██▓▓▓▓▓▓▓▓▓   \n       █▓▓▒▒▓█████▓▓▒▒▒▒▓▓███ ▓▓▒▓▓▓▓▓▓▓\n        ▓▓████▓██▓█▒▒▒▒▒▓▓███     ▓▓▓▓▓▓\n         ▓██▓▓▓█▒▒▓▒░▓▒▒▓▓▓██       ▓▒▒▓\n          ▓▓▒▒▒▒▒██▓███▓▓▓▓▓▓▓      ▓▒▒▓\n                ▓▒███▓▓▓▓▓▓▓▓▓       ▒▒ \n                ▓▓▒▓▓▓▓▓▓▓▓▓▓▓▓      ▒▒ \n              ▒░░░░▒▒▒▓▓▓▓▓▓▓▓▓     ▒▒▓ \n            ▒░░░░░░░▒▒▒▒▓▓▓▓▓▓▓    ▒▒▒▒ \n           ▒░░▒░░░░░▒▒▒▒▓▓▓▓▓▓▓▓ ▓▒▒▒▒▒ \n          ▒░░░░░░░░▒▒▒▒▒▓▓▓▓▓▓▓▓ ▓▒▓▓▓  \n          ▓▒░░░░░░▒▒▒▒▒▓██▓▓▓▓▓ ▒▓▒▒▒▒▓ \n           █▓▒░▒▒▒▒▒▒▓▓██▓▓▓▓▓   ▓▒▒▓▒▒ \n          ▓▓██▓▓▓▓▓▓████▓▓▓▓▓           \n         ▓▓████████████▓▓█▓             \n        ▓▓███  █▓████▓▓▓█               \n        ▓▓▓▓▓▓ ▓▓██  ▓▓▓▓               \n          ▓▓▓▓▓▓▓█▓   ▓▓▓▓              \n            ▓▓▓▓▓▒▒    ▓▓▓▓             \n           ▓▓▒▒▒▓       ▓▒▓▓            \n    ▒▒▒▒▒▒▒▒▒▒▒▓        ▓▓▒▒▓           \n▓██▓▓▓▓▓▓▓▓▓▓████████▓▓▒▒▒▒▒▓▓          \n                ████▓▓██▓███▓████████▓  \n")
+
+slime = chara("Slime", "Foul", 1, 47, 47, 40, 40, 0, 5, 6, 4, 3, 4, 0, 10, 0, {
+       "Physical":{"aff": 1, "res":0},
+       "Fire":{"aff": -3, "res":-0.25},
+       "Ice":{"aff":-3, "res": -0.25},
+       "Lightning":{"aff":-3, "res":-0.25},
+       "Force": {"aff": -3, "res": -0.25},
+       "Light": {"aff":-3, "res": -0.25},
+       "Dark": {"aff": 3, "res": 0.5},
+       "Almighty": {"aff": 3, "res": 0},
+       "Support": {"aff": -1},
+       "Heal": {"aff": 0},
+       "Ailment": {"aff": 0},
+       "Sleep": {"res": 0, "dur": 0, "inflict": 0},
+       "Mirage": {"res": 0, "dur": 0, "inflict": 0},
+       "Poison": {"res": 0.5, "dur": 0, "inflict": 0},
+       "Confusion": {"res": 0, "dur": 0, "inflict": 0},
+       "Charm": {"res": 0, "dur": 0, "inflict": 0},
+       "Seal": {"res": 0, "dur": 0, "inflict": 0}}, [lunge, poisma], [dustoma, bestial_bite, makajama], 0, {"taru": {"stage": 0, "dur":0}, "raku": {"stage": 0, "dur":0}, "suku": {"stage": 0, "dur":0}}, False, "", "                      ▓▓▓▓▓▓▓█          \n                    ▓▓▓▓▓▓▓▓████        \n                   ▓▓▓▓▓▓▓▓▓▓▓▓███      \n                  ▓▓▓▓▓▓▓▓█▓▓▓▓███      \n                 ▓▓▓▓▓░░░██▓░▓████      \n                ▓▓▓▓▓█▓▓▓█▓▓▒▓████      \n               ▓▓▓▓▓████▓▓▓▓█▓█████     \n             █▓▓▓▓▓█▓▓▓██████▓██████    \n            █▓▓▓▓▓▓▓▓███████████████    \n          ██▓▓▓▓█▓▓███▓▓▓▓▓▓▓█▓██████   \n       ██▓▓▓▓▓▓██▓▓▓▓████████▓▓▓██████  \n     ██▓▓█▓█▓▓▓█▓▓▓▓▓███▓▓████████████  \n   █▓▓█▓▓▓█▓▓█▓▒▒▓▓█████▓██████████████ \n▓▓▓████▓█▓▒███▒▒▓▓██████████████████████\n")
+
+slime1 = chara("Slime", "Foul", 1, 47, 47, 40, 40, 0, 5, 6, 4, 3, 4, 0, 10, 0, {
+       "Physical":{"aff": 1, "res":0},
+       "Fire":{"aff": -3, "res":-0.25},
+       "Ice":{"aff":-3, "res": -0.25},
+       "Lightning":{"aff":-3, "res":-0.25},
+       "Force": {"aff": -3, "res": -0.25},
+       "Light": {"aff":-3, "res": -0.25},
+       "Dark": {"aff": 3, "res": 0.5},
+       "Almighty": {"aff": 3, "res": 0},
+       "Support": {"aff": -1},
+       "Heal": {"aff": 0},
+       "Ailment": {"aff": 0},
+       "Sleep": {"res": 0, "dur": 0, "inflict": 0},
+       "Mirage": {"res": 0, "dur": 0, "inflict": 0},
+       "Poison": {"res": 0.5, "dur": 0, "inflict": 0},
+       "Confusion": {"res": 0, "dur": 0, "inflict": 0},
+       "Charm": {"res": 0, "dur": 0, "inflict": 0},
+       "Seal": {"res": 0, "dur": 0, "inflict": 0}}, [lunge, poisma, dustoma], [bestial_bite, makajama], 0, {"taru": {"stage": 0, "dur":0}, "raku": {"stage": 0, "dur":0}, "suku": {"stage": 0, "dur":0}}, False, "", "                      ▓▓▓▓▓▓▓█          \n                    ▓▓▓▓▓▓▓▓████        \n                   ▓▓▓▓▓▓▓▓▓▓▓▓███      \n                  ▓▓▓▓▓▓▓▓█▓▓▓▓███      \n                 ▓▓▓▓▓░░░██▓░▓████      \n                ▓▓▓▓▓█▓▓▓█▓▓▒▓████      \n               ▓▓▓▓▓████▓▓▓▓█▓█████     \n             █▓▓▓▓▓█▓▓▓██████▓██████    \n            █▓▓▓▓▓▓▓▓███████████████    \n          ██▓▓▓▓█▓▓███▓▓▓▓▓▓▓█▓██████   \n       ██▓▓▓▓▓▓██▓▓▓▓████████▓▓▓██████  \n     ██▓▓█▓█▓▓▓█▓▓▓▓▓███▓▓████████████  \n   █▓▓█▓▓▓█▓▓█▓▒▒▓▓█████▓██████████████ \n▓▓▓████▓█▓▒███▒▒▓▓██████████████████████\n")
 
 
 def pclv():

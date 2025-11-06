@@ -25,6 +25,7 @@ glossary = {"fight": "Enter the combat menu\nThis will allow you to select indiv
             "zan": "The user fires a burst of force towards a single target, dealing 130 force damage",
             "mudo": "The user surrounds a target with demonic energy, dealing 140 dark damage.\nThis move has a chance to instantly kill targets who are weak to it.",
             "hama": "The user surrounds a single target with holy energy, dealing 140 light damage.\nThis move has a chance to instantly kill targets who are weak to it.",
+            "life drain": "The user drains a single target's life force, dealing 130 Almighty damage.\nThe damage dealt is restored to the user's HP",
             "megido": "The user unleashes a burst of magical energy, dealing 125 almighty damage to all foes",
             "megidola": "The user unleashes an explosion of magical energy, dealing 160 almighty damage to all foes",
             "dia": "A move which slightly restores 1 ally's HP",

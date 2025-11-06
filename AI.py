@@ -124,7 +124,7 @@ def Descartes(enemies, party, egraves, pgraves):
                     else:
                         x -= enemies[relay].coward/2
                         x -= enemies[relay].play/2
-                        x += (100 - (group[k].hp / group[k].mxhp) * 100)/2
+                        # x += (100 - (group[k].hp / group[k].mxhp) * 100)/2
                         x += group[k].buffs["taru"]["stage"] * 20
                         if group[k].element["Sleep"]["dur"] > 0:
                             x -= 30
@@ -165,10 +165,17 @@ def Descartes(enemies, party, egraves, pgraves):
 
         # for i in range(len(prioritylist)):
         #     print(prioritylist[i][2].name, prioritylist[i][1])
+        print(enemies[relay].name.upper()+":")
+        if prioritylist[len(prioritylist)-1][2].element == "Heal":
+            print(enemies[relay].lines.heal)
+            enemies[relay].element["Heal"]["inflict"] = 2
+        elif prioritylist[len(prioritylist)-1][2].element == "Support":
+            print(enemies[relay].lines.support)
+        else:
+            print(enemies[relay].lines.attack)
         y = skilluse(enemies, party, enemies[relay], prioritylist[len(prioritylist)-1][0], prioritylist[len(prioritylist)-1][2], [egraves, pgraves])
         time.sleep(1)
-        if prioritylist[len(prioritylist)-1][2].element == "Heal":
-            enemies[relay].element["Heal"]["inflict"] = 2
+
         if y == -2:
             pt = 0
             hpt = 0

@@ -10,10 +10,20 @@ graveyard = {}
 def fight(party, enemy):
     egraveyard = []
     pgraveyard = []
+    names = []
+    combatants = []
     pt = len(party)
     hpt = 0
     turn = 0
-    combatants = party + enemy
+    for i in range(pt):
+        names.append(party[i].name)
+        combatants.append(party[i])
+
+    for i in range(len(enemy)):
+        if enemy[i].name in names:
+            enemy[i].name += "(1)"
+        combatants.append(enemy[i])
+
 
     for i in range(len(party)):
         if strike in party[i].skills:
@@ -38,13 +48,13 @@ def fight(party, enemy):
                     combatants[i].buffs[effects[j]]["stage"] = 0
 
         combatants = party + enemy
-
         namedisplay(enemy, False)
         partymenu = input("A) Fight\nB) Talk\nC) Status\nD) Skip\nE) Flee\n").lower()
 
         if partymenu == "a":
             baton = 0
             while len(enemy) > 0 and len(party) > 0 and (pt > 0 or hpt > 0):
+                old = len(egraveyard)
                 if baton >= len(party):
                     baton = 0
                 party[baton].guard = False
@@ -225,14 +235,49 @@ def fight(party, enemy):
 
                 else:
                    lookup(unitmenu)
+                   baton -= 1
 
                 for i in range(len(pgraveyard)):
                     if pgraveyard[i].hp > 0:
                         party.append(pgraveyard[i])
                         pgraveyard.remove(pgraveyard[i])
 
-                baton += 1
+                if len(enemy) == 1 and len(egraveyard) > old:
+                    print("\n"+enemy[0].name.upper()+":")
+                    react = enemy[0].lines.final(enemy[0])
+                    if react == "aggro":
+                        print(enemy[0].name, "is making a last stand!")
+                        if enemy[0].buffs["taru"]["stage"] >= 2:
+                            print("But their offensive stats were already maxed out!")
+                            enemy[0].buffs["taru"]["dur"] = 4
+                        else:
+                            print(enemy[0].name + "'s attack rose by one rank!")
+                            enemy[0].buffs["taru"]["stage"] += 1
+                            enemy[0].buffs["taru"]["dur"] = 4
+                        if enemy[0].buffs["suku"]["stage"] <= -2:
+                            print("But their defensive stats were already at rock bottom!")
+                            enemy[0].buffs["raku"]["dur"] = 4
+                        else:
+                            print(enemy[0].name + "'s defence was lowered by one rank!")
+                            enemy[0].buffs["raku"]["stage"] -= 1
+                            enemy[0].buffs["raku"]["dur"] = 4
+                        enemy[0].coward -= 30
+                    elif react == "none":
+                        if enemy[0].hp <= 0:
+                            print(enemy[0].name, "died!")
+                            egraveyard.append(enemy[0])
+                            enemy.remove(enemy[0])
+                    elif react == "flee":
+                        print("The", enemy[0].name, "left the battle!")
+                        enemy.remove(enemy[0])
+                    elif react == "recruit":
+                        party.append(enemy[0])
+                        print(enemy[0].lines.recruited)
+                        enemy[0].xp = 0
+                        enemy.remove(enemy[0])
+                    time.sleep(1.5)
 
+                baton += 1
 
 
         elif partymenu == "b":
@@ -253,29 +298,43 @@ def fight(party, enemy):
                 continue
             print("You struck up a conversation with the", enemy[ord(aim)-65].name)
             time.sleep(1)
-            result = enemy[ord(aim)-65].lines.opening[random.randint(0, len(enemy[ord(aim)-65].lines.opening)-1)]()
-            if result == "aggro":
-                print("The", enemy[ord(aim) - 65].name, "became aggravated!")
-                enemy[ord(aim)-65].coward -= 30
-
-            elif result == "none":
-                #print("I am the nothingman")
-                if enemy[ord(aim)-65].hp <= 0:
-                    egraveyard.append(enemy[ord(aim)-65])
-                    enemy.remove(enemy[ord(aim)-65])
-                time.sleep(1)
-                continue
-            else:
-                if result == "flee":
-                    print("The", enemy[ord(aim) - 65].name, "left the battle!")
-                elif result == "recruit":
-                    party.append(enemy[ord(aim) - 65])
-                    print(enemy[ord(aim) - 65].lines.recruited)
-                    enemy[ord(aim)-65].xp = 0
-
+            if "(1)" in enemy[ord(aim)-65].name:
+                print(enemy[ord(aim)-65].name.upper()+":")
+                print(enemy[ord(aim)-65].lines.friend)
+                gift = random.randint(0, len(items)-1)
+                print("The demon gave you 1", items[gift].name)
+                items[gift].cost += 1
+                print("The demon left")
                 enemy.remove(enemy[ord(aim) - 65])
                 if len(enemy) > 0:
                     continue
+            else:
+                result = enemy[ord(aim)-65].lines.opening[random.randint(0, len(enemy[ord(aim)-65].lines.opening)-1)](enemy[ord(aim)-65])
+                if result == "aggro":
+                    print("The", enemy[ord(aim) - 65].name, "became aggravated!")
+                    enemy[ord(aim)-65].coward -= 30
+
+                elif result == "none":
+                    #print("I am the nothingman")
+                    if enemy[ord(aim)-65].hp <= 0:
+                        print(enemy[ord(aim)-65].name, "died!")
+                        egraveyard.append(enemy[ord(aim)-65])
+                        enemy.remove(enemy[ord(aim)-65])
+                    time.sleep(1)
+                    continue
+                else:
+                    if result == "flee":
+                        print("The", enemy[ord(aim) - 65].name, "left the battle!")
+                    elif result == "recruit":
+                        party.append(enemy[ord(aim) - 65])
+                        print(enemy[ord(aim) - 65].lines.recruited)
+                        enemy[ord(aim)-65].xp = 0
+
+                    enemy.remove(enemy[ord(aim) - 65])
+                    if len(enemy) > 0:
+                        time.sleep(1)
+                        continue
+            time.sleep(1)
 
 
 
