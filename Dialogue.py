@@ -33,7 +33,7 @@ monsterd = bargaintxt("LeMmE tHiNk", "GiMmE", ["A sMaLl bIt oF YoUr", "A nIcE cH
 toughd = bargaintxt("Let's see here", "Fork over", ["A small bit of your", "a nice piece of your", "A bunch of your", "one"], ["HP", "MP", 'MaCcA', "Life Stone", "Chakra Drop", "Amrita Soda", "Revival Bead"], "That's the stuff!", "You don't have ANY?", "Take one of mine then!", "Alright, I've had it with you!", "Stingy people like you PISS ME OFF!", "Fair enough", "I think that's enough", "Man, you're so gullible!", "Here, you can have this--just spare me!", "You've bled me dry!", "I'll make you pay for trying that!", "Better than dying, I guess", "OW! The fuck's wrong with you!?")
 
 def pixiec1(demon):
-    print(pixie.image+"\nPIXIE:\n'WOW, A human!'\n'I've never seen a real life human before! Do you mind if I get a closer look?'")
+    print("WOW, A human!'\n'I've never seen a real life human before! Do you mind if I get a closer look?'")
     x = input("\nA) Of course\nB) Not sure I'm comfortable with that,\n").lower()
     if x == "a":
         y = random.randint(0, 100)
@@ -83,7 +83,7 @@ def pixiec1(demon):
         return pixiec1(demon)
 
 def pixiec2(demon):
-    print(pixie.image+"PIXIE:\n'Whoa, you talked to me! Could you want me to join you?'\n'Okay then, let's talk!'\n'I'm  gonna ask you a question, so make sure you answer in a way that'd make me happy, okay?'")
+    print("'Whoa, you talked to me! Could you want me to join you?'\n'Okay then, let's talk!'\n'I'm  gonna ask you a question, so make sure you answer in a way that'd make me happy, okay?'")
     h = input("'So... do you think I'm cute?'\n\nA) You're cute\nB) Not really\nC) I'm leaving\n").lower()
     if h == "a":
         print(pixie.image+"\nPIXIE:\n'Ahaha! Thanks!'")
@@ -184,7 +184,7 @@ def pixier(demon):
 
 def pretac1(demon):
     name = preta.image+"\nPRETA:\n"
-    print(name+"'Man, I'm starving! Got anything to eat?'\n")
+    print("'Man, I'm starving! Got anything to eat?'\n")
     eat = input("A) No, sorry\nB) Me\nC) A knuckle sandwich\nD) I've got a coupon for 2 free pizzas in my pocket\n").lower()
     if eat == "a":
         print(name+"'Then how about I eat YOU instead!'")
@@ -202,7 +202,7 @@ def pretac1(demon):
             return "aggro"
     elif eat == "c":
         print(name+"'A knuckle sandwich? I've never heard of a sandwich like that.'\n'The hell's it taste like?'\n")
-        input("A) Sweet, like revenge\nB) Bitter, like defeat\nC) Salty, like your tears\nD) Like a cool night on a hot summer day\nE) Pain\nF) Beef\n")
+        input("A) Sweet, like revenge\nB) Bitter, like defeat\nC) Salty, like your tears\nD) Like a cool breeze on a hot summer day\nE) Pain\nF) Beef\n")
         print(name+"'Wow! I don't know what that means, but it sure sounds good.'\n'Hey, maybe I should join you. That way I can have all the sandwiches I want!'")
         z = bargaining("buddy", 10, 0, 0, toughd, preta)
         if z == "pass":
@@ -220,7 +220,7 @@ def pretac1(demon):
 
 def slimec1(demon):
     name = slime.image+"\nSLIME:\n"
-    print(name+"'HeY, yOu lOoK toUGh! Let'S hAVe aN ARm wREstLinG MAtcH!'\n")
+    print("'HeY, yOu lOoK toUGh! Let'S hAVe aN ARm wREstLinG MAtcH!'\n")
     match = input("A) You're on!\nB) I'll pass\n").lower()
     if match == "a":
         print("\nYou had an arm wrestling match with the demon.\nDue to the Slime having no arms, you are automatically declared the winner.")
@@ -234,69 +234,107 @@ def slimec1(demon):
         lookup(match)
         return slimec1(demon)
 
-# def monsterc1(demon):
-#     name = "\n"+demon.name+"\n"
-#     print(name+"'thERE's A hUMan sCeNt oN YA. you GOT ThE mAN-stink. whY's THAt, buDDy...?'\n")
-#     hum = input("A) I'm human\nB) I ate a human\nC) I saw humans around\n").lower()
-#     if hum == "a":
-#         if random.randint(0, 100) >= 60:
-#             print(name+"'EEHEeee...? wHAT THE hELL's A huMan DoINg hEre?'\n")
-#             q = input("A) Hunting Demons\nB) Moving in\nC) Tourism\n").lower()
-#             if q == "a":
-#                 if random.randint(0, 100) >= 65:
-#                     print(name+"'So HEY, WhaT DO YoU AcTUAlLY Do With THE DemoNS you KILL?'\n")
-#                     c = input("A) Taxidermy\nB)I eat them\nC) Use them for research\n").lower()
-#                     if c == "a":
-#                         print(name+"'No WAY I'm GOnna be thE InTEriOR dEcOratiNg fOr sOme cHUmp-ass HuMan'S ROoM!'")
-#                         return "aggro"
-#                     elif c == "b":
-#                         print(name+"'WAIt! I'm SuPPosed tO eAt YoU! nOt tHE oTHEr wAY rOUnd!'")
-#                         return threat(60, 2, demon, monsterd)
-#                     elif c == "c":
-#                         print(name+"'EeHEE! YOU DUmbAsS huMaNs AnD YouR TiNy braiNs, AlwAys waSTiNG TiME puzZlINg OveR USelEss ShIt!'\n'AlL YoU goTtA Do Is ASk fOR a dEMON's kNOWLedGE! MUcH EasIER!'")
-#                         return monsterr(demon)
-#
-#                     else:
-#                         lookup(q)
-#                         return monsterc1(demon)
-#                 else:
-#                     print(name+"WeLL, YoU sURe aS hELL aREn'T kILlIng mE!")
-#                     return "aggro"
-#             elif q == "b":
-#                 print(name+"'firST yOU dEsTROy THE hUmAN wOrLd'S EnVIronmeNT, AND nOW YoU'rE GoNNA MesS WiTH oUrs!?'\n'FuCK OFF, bUDDy! GO die iN YOur OwN RuIned worLd, yOu GODDAmN ParaSITE!'")
-#                 return "aggro"
-#             elif q == "c":
-#                 ilist = ["Life Stone", "Chakra Drop", "Amrita Soda", "Revival Bead"]
-#                 print(name+"'eEhee! WEll, heRE, TAKe a souVEnir!'")
-#                 x = random.randint(0, len(items)-1)
-#                 print("The demon handed you one", ilist[x])
-#                 items[ilist[x]] += 1
-#                 return "flee"
-#             else:
-#                 lookup(q)
-#                 return monsterc1(demon)
-#
-#         else:
-#             print(name+"EeeHeEeE! thEn i'm GONna eAt yA!")
-#             return "aggro"
-#     elif hum == "b":
-#         print(name+"'eEheE! ReALLy!? hoW Was iT?'\n'taSTed DElicioUS, RIGhT?'")
-#         taste = input("A) Pretty tasty\nB) They tasted awful\nC) Good flavour notes, and finely aged\n").lower()
-#         if taste == "a":
-#             print(name+"'EeHEe! i wAnnA EaT A hUmAn ToO!'\n'bUt IF i JUSt eAt YOU, ThAt's PROBably closE ENouGH!'")
-#             return "aggro"
-#         elif taste == "b":
-#
-#         else:
-#             lookup(taste)
-#             return monsterc1(demon)
-#     else:
-#         lookup(hum)
-#         return monsterc1(demon)
+def mquirk(old):
+    new = ""
+    for i in range(len(old)):
+        if random.randint(0, 100) <= 50:
+            new += old[i].upper()
+        else:
+            new += old[i].lower()
+    return new
+def monsterc1(demon):
+    name = demon.image+"\n"+demon.name.upper()+":\n"
+    print("'thERE's A hUMan sCeNt oN YA.'\n'you GOT ThE mAN-stink. whY's THAt, buDDy...?'\n")
+    hum = input("A) I'm human\nB) I ate a human\nC) I saw humans around\n").lower()
+    if hum == "a":
+        if random.randint(0, 100) >= 60:
+            print(name+"'EEHEeee...? wHAT THE hELL's A huMan DoINg hEre?'\n")
+            q = input("A) Hunting Demons\nB) Moving in\nC) Tourism\n").lower()
+            if q == "a":
+                if random.randint(0, 100) >= 65:
+                    print(name+"'So HEY, WhaT DO YoU AcTUAlLY Do With THE DemoNS you KILL?'\n")
+                    c = input("A) Taxidermy\nB) I eat them\nC) Use them for research\n").lower()
+                    if c == "a":
+                        print(name+"'No WAY I'm GOnna be thE InTEriOR dEcOratiNg fOr sOme cHUmp-ass HuMan'S ROoM!'")
+                        return "aggro"
+                    elif c == "b":
+                        print(name+"'WAIt! I'm SuPPosed tO eAt YoU! nOt tHE oTHEr wAY rOUnd!'")
+                        return threat(60, 2, demon, monsterd)
+                    elif c == "c":
+                        print(name+"'EeHEE! YOU DUmbAsS huMaNs AnD YouR TiNy braiNs, AlwAys waSTiNG TiME puzZlINg OveR USelEss ShIt!'\n'AlL YoU goTtA Do Is ASk fOR a dEMON's kNOWLedGE! MUcH EasIER!'")
+                        return monsterr(demon)
+
+                    else:
+                        lookup(q)
+                        return monsterc1(demon)
+                else:
+                    print(name+"WeLL, YoU sURe aS hELL aREn'T kILlIng mE!")
+                    return "aggro"
+            elif q == "b":
+                print(name+"'firST yOU dEsTROy THE hUmAN wOrLd'S EnVIronmeNT, AND nOW YoU'rE GoNNA MesS WiTH oUrs!?'\n'FuCK OFF, bUDDy! GO die iN YOur OwN RuIned worLd, yOu GODDAmN ParaSITE!'")
+                return "aggro"
+            elif q == "c":
+                print(name+"'eEhee! WEll, heRE, TAKe a souVEnir!'")
+                x = items[random.randint(0, len(items)-1)]
+                print("The demon handed you one", x.name)
+                x.cost += 1
+                return "flee"
+            else:
+                lookup(q)
+                return monsterc1(demon)
+
+        else:
+            print(name+"EeeHeEeE! thEn i'm GONna eAt yA!")
+            return "aggro"
+    elif hum == "b":
+        if random.randint(0, 100) < 50:
+            print(name + mquirk("'Really? So it's just their blood that I'm smelling on ya?'"))
+            monsterc2(demon)
+        else:
+            print(name+"'eEheE! ReALLy!? hoW Was iT?'\n'taSTed DElicioUS, RIGhT?'")
+            taste = input("A) Pretty tasty\nB) They tasted awful\nC) Good flavour notes, and finely aged\n").lower()
+            if taste == "a":
+                print(name+"'EeHEe! i wAnnA EaT A hUmAn ToO!'\n'bUt IF i JUSt eAt YOU, ThAt's PROBably closE ENouGH!'")
+                return "aggro"
+            elif taste == "b":
+                print(name+"'I bEt yOU juST USeD the wRONg SeAsONInGs!'\n'YOU've gOt TO be cArEFul wHEn pREPaRinG a dIsH lIKe tHAT! MAYbE I sHOuLD heLp yOU ouT NExt TImE!'")
+                return monsterr(demon)
+            elif taste == "c":
+                print(name+"'mANn, YOu'rE a REal CoNnOisSEUR, aREn'T yA?'")
+                if random.randint(0, 100) <= 75:
+                    print("'MAybe I cOUld lEARn A tHIng or tWO FRoM YOu'")
+                    return monsterr(demon)
+                else:
+                    print("'YOU pREteNTiOUs StUCK-uPs KNOw NOtHiNG aBoUT GOOd FooD!'\n'ALl YOU FUcKeRs dO iS tAlK ouTTa yOUR ASs alL dAY!'")
+                    return "aggro"
+            else:
+                lookup(taste)
+                return monsterc1(demon)
+    elif hum == "c":
+        print(name+mquirk("'You did? Well where the hell were they?!'"))
+        see = input("A) I forgot\nB) Over in that direction\nC) They ran away\nD) I killed them\n").lower()
+        if see == "a":
+            print(name+mquirk("'Yeah right, like I'd believe that.'\n'I bet you're just trying to keep the humans all to yourself!'"))
+            return "aggro"
+        elif see == "b":
+            print(name+mquirk("'They were?'\n'Gee, thanks for the info- now I can treat myself to a nice human buffet!'\n'Here's a little token of my thanks for helping me out'"))
+            gift = items[random.randint(0, len(items)-1)]
+            print("The demon handed you 1", gift.name)
+            gift.cost += 1
+            return "flee"
+        elif see == "c":
+            print(name+mquirk("'Leave it to a dumbass like you to find humans, only to let them fucking run away!'\n'I'm surprised you can even walk, given how much stupidity you're lugging round with you!'"))
+            return "aggro"
+        elif see == "d":
+            print(name+mquirk("'Really? So it's just their blood that I'm smelling on ya?'"))
+            monsterc2(demon)
+    else:
+        lookup(hum)
+        return monsterc1(demon)
 
 def monsterc2(demon):
     name = demon.image+"\n"+demon.name.upper()+":\n"
-    print(demon.name.upper()+":\n"+"'EehEeHEEHEE! I SmEll blOoD! BLood!'\n")
+    print("'EehEeHEEHEE! I SmEll blOoD! BLood!'\n")
     blood = input("A) Laugh with them\nB) Sniff the air\nC) Stay silent\n").lower()
     if blood == "a":
         print(name+"'EEHEe... You GET It, rIght? you LovE THE FEELInG oF GetTINg SPLaTteReD wIth blOOD, too!'")
@@ -458,7 +496,7 @@ def toughfight(demon):
 
 def toughmurder(demon):
     name = demon.image + "\n" + demon.name.upper() + ":\n"
-    print(name+"'You lookin' at me, buddy? You want some of this?'\n'I'll stone cold murder you.'\n")
+    print("'You lookin' at me, buddy? You want some of this?'\n'I'll stone cold murder you.'\n")
     look = input("A) Glare at them\nB) Ignore them\nC) Walk closer\n").lower()
     if look == "a":
         print(name+"'What, you think you're hot stuff?'\n'With a gross-ass face like that?'\n")
@@ -678,9 +716,9 @@ def toughr(demon):
 
 def threat(defend, max, victim, text):
     count = 0
-    name = victim.name + "\n"+victim.name.upper()+":\n"
+    name = victim.image + "\n"+victim.name.upper()+":\n"
     while True:
-        print("A) Extort\nB) Attack\nC) Spare\nD) Recruit\n")
+        print("A) Extort\nB) Attack\nC) Spare")
         if "(1)" not in victim.name:
             print("D) Recruit")
         x = input().lower()
@@ -851,9 +889,9 @@ class script:
         self.final = final
 
 pixiescript = script([pixiec1, pixiec2], "'I'm Pixie of the Fairy race'\n'I'll do my best to support you!'", "'Oh?'\n'I see you have my friend with you.'\n'In that case, here's a little gift so you take good care of her.'", "'Take this!'", "'Just try and catch me!'", "'Crap, this is bad!'", finalcute)
-slimescript = script([slimec1, monsterc2], "'I'm SlIMe oF tHE fOUl rAce'\n'I'Ll inFEct AlL yOUr fOeS!'", "'HeY! ThAt's my pAl yOu gOt tHeRe.'\n'WeLl aNY fRiEnD oF HiS IS a FrIENd oF mINE!'", "'eAt tHiS!'", "'LEt's pOWer uP!'", "", finalmonster)
+slimescript = script([slimec1, monsterc1, monsterc2], "'I'm SlIMe oF tHE fOUl rAce'\n'I'Ll inFEct AlL yOUr fOeS!'", "'HeY! ThAt's my pAl yOu gOt tHeRe.'\n'WeLl aNY fRiEnD oF HiS IS a FrIENd oF mINE!'", "'eAt tHiS!'", "'LEt's pOWer uP!'", "", finalmonster)
 pretascript = script([pretac1, toughbeckon, toughmurder], "'I'm Preta of the Haunt race'\n'I'm craving for some action!'", "'Oh hey, I see you've got one of my mates with you.'\n'Well then, here's something for the road!'", "'Lemme bite ya!'", "", "", finaltough)
-daemonscript = script([monsterc2], "'I'm Daemon of the Brute race'\n'Let's cause some chaos!'", "", "'I'Ll tEAr yOU to sHReDS!'", "'LEtS kICk tHiNgs Up a nOTcH!'", "", finalmonster)
+daemonscript = script([monsterc1, monsterc2], "'I'm Daemon of the Brute race'\n'Let's cause some chaos!'", "", "'I'Ll tEAr yOU to sHReDS!'", "'LEtS kICk tHiNgs Up a nOTcH!'", "", finalmonster)
 # if run == "none":
 #     print("No turn passes")
 # elif run == "aggro":
@@ -864,4 +902,5 @@ daemonscript = script([monsterc2], "'I'm Daemon of the Brute race'\n'Let's cause
 #     print("I'm the fairy, Pixie! Nice to meet you")
 # else:
 #     print("You should not be getting this message")
+
 

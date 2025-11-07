@@ -236,10 +236,13 @@ def fight(party, enemy):
                    lookup(unitmenu)
                    baton -= 1
 
+                gravedig = 0
                 for i in range(len(pgraveyard)):
-                    if pgraveyard[i].hp > 0:
+                    if pgraveyard[i - gravedig].hp > 0:
                         party.append(pgraveyard[i])
                         pgraveyard.remove(pgraveyard[i])
+                        gravedig += 1
+
 
                 if len(enemy) == 1 and len(egraveyard) > old:
                     react = enemy[0].lines.final(enemy[0])
@@ -299,16 +302,15 @@ def fight(party, enemy):
                 continue
             print("You struck up a conversation with the", enemy[ord(aim)-65].name)
             time.sleep(1)
+            print(enemy[ord(aim)-65].image + "\n" + enemy[ord(aim)-65].name.upper() + ":")
             if "(1)" in enemy[ord(aim)-65].name:
-                print(enemy[ord(aim)-65].image)
-                print(enemy[ord(aim)-65].name.upper()+":")
                 print(enemy[ord(aim)-65].lines.friend)
                 gift = random.randint(0, len(items)-1)
                 print("The demon gave you 1", items[gift].name)
                 items[gift].cost += 1
                 print("The demon left")
                 enemy.remove(enemy[ord(aim) - 65])
-                time.sleep(1)
+                time.sleep(2)
                 if len(enemy) > 0:
                     continue
             else:
@@ -331,7 +333,7 @@ def fight(party, enemy):
                         party.append(enemy[ord(aim) - 65])
                         print(enemy[ord(aim) - 65].lines.recruited)
                         enemy[ord(aim)-65].xp = 0
-                        time.sleep(1)
+                        time.sleep(2)
 
                     enemy.remove(enemy[ord(aim) - 65])
                     if len(enemy) > 0:

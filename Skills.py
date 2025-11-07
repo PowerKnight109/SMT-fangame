@@ -426,7 +426,7 @@ class camrita_soda(skill):
 
 class crevival_bead(skill):
     def __init__(self):
-        super().__init__("Revival Bead", "Heal", 100, 1, 2, False)
+        super().__init__("Revival Bead", "Heal", 100, 3, 2, False)
     def use(self, user, target):
         print(target.name, "was revived!")
         target.hp = target.mxhp/2

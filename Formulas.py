@@ -216,6 +216,7 @@ def lvformula(player, party, corpses):
     for i in range(len(party)):
         for j in range(len(corpses)):
             print(party[i].name, "levelled up!")
+            party[i].lv += 1
             time.sleep(1)
             if party[i] == player:
                 pclv()
